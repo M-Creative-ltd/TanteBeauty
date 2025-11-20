@@ -1,0 +1,28 @@
+title: home page
+hero:
+  heading: The Natural way
+  ctaLabel: Explore our products
+  ctaTarget: /products
+  image: /uploads/home/hero/hero/image.svg
+  logo: /uploads/home/hero/hero/logo.png
+  accentIcon: /uploads/home/hero/hero/accentIcon.svg
+intro:
+  image: /uploads/home/intro/intro/image.png
+  logo: /uploads/home/intro/intro/logo.png
+  ctaLabel: Explore our Products
+  ctaTarget: /products
+why:
+  heading: Why do we do what  we do?
+  image: /uploads/home/why/why/image.png
+  highlightImage: /uploads/home/why/why/highlightImage.png
+  highlightCaption: Image showing a black bottle that contains a syrum for skin care
+philosophy:
+  heading: Our philosophy
+  image: /uploads/home/philosophy/philosophy/image.png
+promise:
+  heading: Our promise to our clients
+  illustration: /uploads/home/promise/promise/illustration.png
+theme:
+  primaryColor: '#014b3c'
+  secondaryColor: '#fff7f5'
+  accentColor: '#ffffff'

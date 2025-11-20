@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #014b3c;
+  --color-secondary: #fff7f5;
+  --color-accent: #ffffff;
+  
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  
+  --animate-bounce-down: bounceDown 2s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* Make prose elements respect parent text alignment */
+  .prose.text-center > * {
+    text-align: center;
+  }
+  
+  .prose.text-center p,
+  .prose.text-center ul,
+  .prose.text-center ol,
+  .prose.text-center li,
+  .prose.text-center h1,
+  .prose.text-center h2,
+  .prose.text-center h3,
+  .prose.text-center h4,
+  .prose.text-center h5,
+  .prose.text-center h6 {
+    text-align: center !important;
+  }
+
+  /* On medium+ screens, if parent has md:text-left, left-align prose content */
+  @media (min-width: 768px) {
+    .prose.text-center > * {
+      text-align: left;
+    }
+    
+    .prose.text-center p,
+    .prose.text-center ul,
+    .prose.text-center ol,
+    .prose.text-center li,
+    .prose.text-center h1,
+    .prose.text-center h2,
+    .prose.text-center h3,
+    .prose.text-center h4,
+    .prose.text-center h5,
+    .prose.text-center h6 {
+      text-align: left !important;
+    }
+  }
+}
