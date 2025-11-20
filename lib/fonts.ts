@@ -20,6 +20,3 @@ export const sansSerifFont = Inter({
 
 
 
-
-
-
