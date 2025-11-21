@@ -23,7 +23,7 @@ export default function IntroSection({
 }: IntroSectionProps) {
   return (
     <section 
-      className="py-12 md:min-h-screen md:py-16 lg:py-20 flex items-center"
+      className="py-12 md:min-h-screen md:py-16 lg:py-20 flex items-center md:snap-start"
       style={{ backgroundColor: secondaryColor }}
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">

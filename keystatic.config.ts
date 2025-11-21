@@ -209,12 +209,6 @@ export default config({
               publicPath: '/uploads/home/hero',
               validation: { isRequired: false },
             }),
-            accentIcon: fields.image({
-              label: 'Accent Icon',
-              directory: 'public/uploads/home/hero',
-              publicPath: '/uploads/home/hero',
-              validation: { isRequired: false },
-            }),
           },
           { label: 'Hero Section' }
         ),

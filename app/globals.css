@@ -58,6 +58,22 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Scroll Snapping for Medium+ Screens - Only active when enable-snap class is present */
+  @media (min-width: 768px) {
+    html.enable-snap {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    
+    /* When snapping is enabled, body handles content flow */
+    html.enable-snap body {
+      min-height: 100vh;
+      height: auto;
+      overflow-y: visible;
+    }
+  }
 }
 
 @layer utilities {

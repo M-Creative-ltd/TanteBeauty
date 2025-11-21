@@ -4,6 +4,8 @@ import IntroSection from './components/sections/IntroSection/IntroSection';
 import WhySection from './components/sections/WhySection/WhySection';
 import PhilosophySection from './components/sections/PhilosophySection/PhilosophySection';
 import PromiseSection from './components/sections/PromiseSection/PromiseSection';
+import ScrollArrow from './components/ui/ScrollArrow/ScrollArrow';
+import ScrollSnapEnabler from './components/utils/ScrollSnapEnabler';
 
 export default async function Homepage() {
   const home = await reader.singletons.home.read();
@@ -34,6 +36,8 @@ export default async function Homepage() {
 
   return (
     <>
+      <ScrollSnapEnabler />
+      <ScrollArrow />
       {hero && hero.image && hero.ctaLabel && hero.ctaTarget && (
         <HeroSection
           heading={hero.heading}
@@ -42,7 +46,7 @@ export default async function Homepage() {
           ctaTarget={hero.ctaTarget}
           image={hero.image}
           logo={hero.logo || undefined}
-          accentIcon={hero.accentIcon || undefined}
+          // accentIcon removed as it is now handled by ScrollArrow
           primaryColor={primaryColor}
         />
       )}

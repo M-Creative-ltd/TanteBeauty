@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { serifFont, sansSerifFont, cormorantGaramondFont } from '../lib/fonts';
 import PageLayout from './components/layout/PageLayout/PageLayout';
+import Footer from './components/layout/Footer/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
       <html lang="en" className={`${serifFont.variable} ${sansSerifFont.variable} ${cormorantGaramondFont.variable}`}>
       <body className={sansSerifFont.className}>
-        <PageLayout>
+        <PageLayout footer={<Footer />}>
           {children}
         </PageLayout>
       </body>

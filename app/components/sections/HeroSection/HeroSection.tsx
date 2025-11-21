@@ -22,7 +22,7 @@ export default function HeroSection({
   primaryColor = '#014b3c',
 }: HeroSectionProps) {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden md:snap-start">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -51,7 +51,7 @@ export default function HeroSection({
         </div>
       )}
 
-      {/* Heading + Arrow Icon - Bottom Left */}
+      {/* Heading - Bottom Left */}
       <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-30 flex flex-col items-start gap-3 md:gap-4">
         <h1 
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold leading-tight"
@@ -59,19 +59,6 @@ export default function HeroSection({
         >
           {heading}
         </h1>
-        {accentIcon && (
-          <div style={{ animation: 'bounceDown 2s ease-in-out infinite' }}>
-            <Image
-              src={accentIcon}
-              alt=""
-              width={48}
-              height={48}
-              priority
-              quality={100}
-              className="object-contain"
-            />
-          </div>
-        )}
       </div>
     </section>
   );

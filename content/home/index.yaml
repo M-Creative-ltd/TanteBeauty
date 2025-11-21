@@ -5,7 +5,6 @@ hero:
   ctaTarget: /products
   image: /uploads/home/hero/hero/image.svg
   logo: /uploads/home/hero/hero/logo.png
-  accentIcon: /uploads/home/hero/hero/accentIcon.svg
 intro:
   image: /uploads/home/intro/intro/image.png
   logo: /uploads/home/intro/intro/logo.png

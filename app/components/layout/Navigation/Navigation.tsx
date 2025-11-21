@@ -21,14 +21,14 @@ export default function Navigation({ inHero = false }: NavigationProps) {
   return (
     <nav
       aria-label="Main navigation"
-      className={inHero ? 'absolute top-10 right-4 z-50 w-full flex justify-end p-4 md:p-6' : 'relative w-full flex justify-end p-4 md:p-6'}
+      className={inHero ? 'fixed top-10 right-4 z-50 w-full flex justify-end p-4 md:p-6' : 'fixed w-full flex justify-end p-4 md:p-6'}
     >
       <button
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="main-menu"
         aria-label="Toggle menu"
-        className={`z-50 ${!isOpen ? 'animate-menu-icon' : ''}`}
+        className={`z-50 cursor-pointer ${!isOpen ? 'animate-menu-icon' : ''}` }
         style={inHero ? { color: '#014b3c' } : { color: '#014b3c' }}
       >
         <span className="flex flex-col gap-1 w-6 h-6">

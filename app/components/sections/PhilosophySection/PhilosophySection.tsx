@@ -15,7 +15,7 @@ export default function PhilosophySection({
   primaryColor = '#014b3c',
 }: PhilosophySectionProps) {
   return (
-    <section className="py-12 md:min-h-screen md:py-16 lg:py-20 bg-gray-50 flex items-center">
+    <section className="py-12 md:min-h-screen md:py-16 lg:py-20 bg-gray-50 flex items-center md:snap-start">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Silhouette Image */}
