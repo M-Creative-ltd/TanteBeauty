@@ -18,12 +18,12 @@ export default function PageLayout({ children, footer }: PageLayoutProps) {
   }
 
   return (
-    <>
+    <div className="overflow-x-hidden w-full max-w-[100vw]">
       <Navigation inHero={true} />
       <main id="main-content">
         {children}
       </main>
       {footer}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { reader } from '../reader';
 import ProductsSection from '../components/sections/ProductsSection/ProductsSection';
 import ServicesSection from '../components/sections/ServicesSection/ServicesSection';
+import MarkdownContent from '../components/ui/MarkdownContent/MarkdownContent';
 
 export default async function ProductsPage() {
   // Fetch settings
@@ -53,10 +54,11 @@ export default async function ProductsPage() {
       const descriptionContent = await service.description();
       // The content() method returns { node } structure, extract the node
       const descriptionNode = descriptionContent?.node || descriptionContent;
+      
       return {
         title: service.title,
         categoryLabel: service.categoryLabel || undefined,
-        description: descriptionNode, // Resolved markdoc content node
+        description: <MarkdownContent content={descriptionNode} />, // Render MarkdownContent on server
         image: service.image || undefined,
       };
     })
