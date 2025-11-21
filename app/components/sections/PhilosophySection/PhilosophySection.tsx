@@ -16,8 +16,8 @@ export default function PhilosophySection({
 }: PhilosophySectionProps) {
   return (
     <section className="py-12 md:min-h-screen md:py-16 lg:py-20 bg-gray-50 flex items-center md:snap-start">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-screen-2xl w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           {/* Left: Silhouette Image */}
           <div className="order-2 lg:order-1">
             <div className="relative w-full aspect-square max-w-lg mx-auto lg:max-w-none">

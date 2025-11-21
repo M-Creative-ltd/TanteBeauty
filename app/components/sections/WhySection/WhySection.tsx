@@ -16,8 +16,8 @@ export default function WhySection({
 }: WhySectionProps) {
   return (
     <section className="py-12 md:min-h-screen md:py-16 lg:py-20 bg-white flex items-center md:snap-start">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-screen-2xl w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           {/* Left: Heading and Body Text */}
           <div className="order-1 lg:order-1 text-center md:text-left">
             <h2
