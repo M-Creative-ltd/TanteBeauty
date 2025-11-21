@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display, Inter, Cormorant_Garamond } from 'next/font/google';
 
 // Modern serif font for "Tante" - Playfair Display is elegant and modern
 export const serifFont = Playfair_Display({
@@ -13,6 +13,15 @@ export const sansSerifFont = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
+});
+
+// Cormorant Garamond for contact page - elegant italic serif
+export const cormorantGaramondFont = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 });
 

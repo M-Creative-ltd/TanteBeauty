@@ -19,6 +19,19 @@ export default async function Homepage() {
   const secondaryColor = theme?.secondaryColor || '#fff7f5';
   const accentColor = theme?.accentColor || '#ffffff';
 
+  // Resolve markdoc content fields before passing to components
+  const introCopy = intro?.copy ? await intro.copy() : null;
+  const introCopyNode = introCopy?.node || introCopy;
+  
+  const whyBody = why?.body ? await why.body() : null;
+  const whyBodyNode = whyBody?.node || whyBody;
+  
+  const philosophyBody = philosophy?.body ? await philosophy.body() : null;
+  const philosophyBodyNode = philosophyBody?.node || philosophyBody;
+  
+  const promiseBody = promise?.body ? await promise.body() : null;
+  const promiseBodyNode = promiseBody?.node || promiseBody;
+
   return (
     <>
       {hero && hero.image && hero.ctaLabel && hero.ctaTarget && (
@@ -37,7 +50,7 @@ export default async function Homepage() {
         <IntroSection
           image={intro.image}
           logo={intro.logo || undefined}
-          copy={intro.copy}
+          copy={introCopyNode}
           ctaLabel={intro.ctaLabel || undefined}
           ctaTarget={intro.ctaTarget || undefined}
           secondaryColor={secondaryColor}
@@ -47,17 +60,15 @@ export default async function Homepage() {
       {why && why.heading && why.image && (
         <WhySection
           heading={why.heading}
-          body={why.body}
+          body={whyBodyNode}
           image={why.image}
-          highlightImage={why.highlightImage || undefined}
-          highlightCaption={why.highlightCaption || undefined}
           primaryColor={primaryColor}
         />
       )}
       {philosophy && philosophy.heading && philosophy.image && (
         <PhilosophySection
           heading={philosophy.heading}
-          body={philosophy.body}
+          body={philosophyBodyNode}
           image={philosophy.image}
           primaryColor={primaryColor}
         />
@@ -65,7 +76,7 @@ export default async function Homepage() {
       {promise && promise.heading && (
         <PromiseSection
           heading={promise.heading}
-          body={promise.body}
+          body={promiseBodyNode}
           illustration={promise.illustration || undefined}
           secondaryColor={secondaryColor}
           primaryColor={primaryColor}

@@ -7,8 +7,10 @@
   
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
+  --font-cormorant: var(--font-cormorant);
   
   --animate-bounce-down: bounceDown 2s ease-in-out infinite;
+  --animate-pinky-promise: pinkyPromise 2.5s ease-in-out infinite;
 }
 
 @keyframes bounceDown {
@@ -17,6 +19,32 @@
   }
   50% {
     transform: translateY(10px);
+  }
+}
+
+@keyframes pinkyPromise {
+  0%, 100% {
+    transform: rotateZ(0deg) rotateX(0deg) translateZ(0);
+  }
+  25% {
+    transform: rotateZ(-8deg) rotateX(-5deg) translateZ(5px);
+  }
+  50% {
+    transform: rotateZ(0deg) rotateX(0deg) translateZ(0);
+  }
+  75% {
+    transform: rotateZ(8deg) rotateX(5deg) translateZ(5px);
+  }
+}
+
+@keyframes menuIconPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 }
 
@@ -33,6 +61,21 @@
 }
 
 @layer utilities {
+  /* Cormorant Garamond font utility */
+  .font-cormorant {
+    font-family: var(--font-cormorant), serif;
+  }
+
+  /* Pinky Promise Animation */
+  .animate-pinky-promise {
+    animation: pinkyPromise 2.5s ease-in-out infinite;
+  }
+
+  /* Menu Icon Attention Animation */
+  .animate-menu-icon {
+    animation: menuIconPulse 1.5s ease-in-out infinite;
+  }
+
   /* Make prose elements respect parent text alignment */
   .prose.text-center > * {
     text-align: center;
@@ -51,22 +94,37 @@
     text-align: center !important;
   }
 
+  /* Prose that should always be centered (not overridden on md+) */
+  .prose.text-center.always-center > *,
+  .prose.text-center.always-center p,
+  .prose.text-center.always-center ul,
+  .prose.text-center.always-center ol,
+  .prose.text-center.always-center li,
+  .prose.text-center.always-center h1,
+  .prose.text-center.always-center h2,
+  .prose.text-center.always-center h3,
+  .prose.text-center.always-center h4,
+  .prose.text-center.always-center h5,
+  .prose.text-center.always-center h6 {
+    text-align: center !important;
+  }
+
   /* On medium+ screens, if parent has md:text-left, left-align prose content */
   @media (min-width: 768px) {
-    .prose.text-center > * {
+    .prose.text-center:not(.always-center) > * {
       text-align: left;
     }
     
-    .prose.text-center p,
-    .prose.text-center ul,
-    .prose.text-center ol,
-    .prose.text-center li,
-    .prose.text-center h1,
-    .prose.text-center h2,
-    .prose.text-center h3,
-    .prose.text-center h4,
-    .prose.text-center h5,
-    .prose.text-center h6 {
+    .prose.text-center:not(.always-center) p,
+    .prose.text-center:not(.always-center) ul,
+    .prose.text-center:not(.always-center) ol,
+    .prose.text-center:not(.always-center) li,
+    .prose.text-center:not(.always-center) h1,
+    .prose.text-center:not(.always-center) h2,
+    .prose.text-center:not(.always-center) h3,
+    .prose.text-center:not(.always-center) h4,
+    .prose.text-center:not(.always-center) h5,
+    .prose.text-center:not(.always-center) h6 {
       text-align: left !important;
     }
   }

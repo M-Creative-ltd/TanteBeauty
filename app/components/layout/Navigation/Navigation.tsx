@@ -21,14 +21,14 @@ export default function Navigation({ inHero = false }: NavigationProps) {
   return (
     <nav
       aria-label="Main navigation"
-      className={inHero ? 'absolute top-10 right-4 z-50 w-full flex justify-end p-4 md:p-6' : 'relative'}
+      className={inHero ? 'absolute top-10 right-4 z-50 w-full flex justify-end p-4 md:p-6' : 'relative w-full flex justify-end p-4 md:p-6'}
     >
       <button
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="main-menu"
         aria-label="Toggle menu"
-        className="md:hidden z-50"
+        className={`z-50 ${!isOpen ? 'animate-menu-icon' : ''}`}
         style={inHero ? { color: '#014b3c' } : { color: '#014b3c' }}
       >
         <span className="flex flex-col gap-1 w-6 h-6">
@@ -39,7 +39,7 @@ export default function Navigation({ inHero = false }: NavigationProps) {
       </button>
       <ul
         id="main-menu"
-        className={`flex gap-6 ${inHero ? 'text-green-800' : ''} ${isOpen ? 'flex flex-col absolute top-full right-0 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg z-50' : 'hidden md:flex'} ${inHero && !isOpen ? 'md:flex' : ''}`}
+        className={`flex gap-6 ${inHero ? 'text-green-800' : ''} ${isOpen ? 'flex flex-col absolute top-full right-0 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg z-50' : 'hidden'}`}
         style={!inHero ? { color: '#014b3c' } : {}}
       >
         <li>
@@ -47,9 +47,6 @@ export default function Navigation({ inHero = false }: NavigationProps) {
         </li>
         <li>
           <Link href="/products" onClick={closeMenu} className="hover:underline font-medium">Products</Link>
-        </li>
-        <li>
-          <Link href="/services" onClick={closeMenu} className="hover:underline font-medium">Services</Link>
         </li>
         <li>
           <Link href="/reviews" onClick={closeMenu} className="hover:underline font-medium">Reviews</Link>

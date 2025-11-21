@@ -55,6 +55,12 @@ export default config({
           description: 'Image of product in the products page',
           validation: { isRequired: true },
         }),
+        displayOrder: fields.integer({
+          label: 'Display Order',
+          description: 'Order for displaying products (lower numbers appear first)',
+          validation: { isRequired: false },
+          defaultValue: 0,
+        }),
       },
     }),
     services: collection({
@@ -93,6 +99,12 @@ export default config({
           publicPath: '/uploads/services',
           description: 'Image for service display',
           validation: { isRequired: false },
+        }),
+        displayOrder: fields.integer({
+          label: 'Display Order',
+          description: 'Order for displaying services (lower numbers appear first)',
+          validation: { isRequired: false },
+          defaultValue: 0,
         }),
       },
     }),
@@ -431,6 +443,36 @@ export default config({
         phoneNumber: fields.text({
           label: 'Phone Number',
           description: 'Contact phone number (e.g., "+250789943032")',
+        }),
+      },
+    }),
+    productSettings: singleton({
+      label: 'Product Settings',
+      path: 'content/product-settings/index',
+      schema: {
+        heading: fields.text({
+          label: 'Section Heading',
+          description: 'Main heading for products section (e.g., "OUR BEAUTY PRODUCTS FOR YOU")',
+        }),
+        subtitle: fields.text({
+          label: 'Subtitle',
+          description: 'Subtitle text below heading (e.g., "To make things easier, we\'ve gathered your favorites here.")',
+          validation: { isRequired: false },
+        }),
+        descriptionText: fields.text({
+          label: 'Description Text',
+          description: 'Text displayed below product grid (e.g., "Our products are thoughtfully crafted...")',
+          validation: { isRequired: false },
+        }),
+      },
+    }),
+    serviceSettings: singleton({
+      label: 'Service Settings',
+      path: 'content/service-settings/index',
+      schema: {
+        heading: fields.text({
+          label: 'Section Heading',
+          description: 'Main heading for services section (e.g., "WE SERVE YOU THROUGH THESE SERVICES")',
         }),
       },
     }),

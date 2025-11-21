@@ -51,28 +51,30 @@ export default function HeroSection({
         </div>
       )}
 
-      {/* Heading + Arrow Icon - Bottom Left */}
-      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-30 flex flex-col items-start gap-3 md:gap-4">
+      {/* Heading - Bottom Left */}
+      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-30">
         <h1 
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold leading-tight"
           style={{ color: primaryColor }}
         >
           {heading}
         </h1>
-        {accentIcon && (
-          <div style={{ animation: 'bounceDown 2s ease-in-out infinite' }}>
-            <Image
-              src={accentIcon}
-              alt=""
-              width={48}
-              height={48}
-              priority
-              quality={100}
-              className="object-contain"
-            />
-          </div>
-        )}
       </div>
+
+      {/* Arrow Icon - Center Bottom */}
+      {accentIcon && (
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30" style={{ animation: 'bounceDown 2s ease-in-out infinite' }}>
+          <Image
+            src={accentIcon}
+            alt=""
+            width={72}
+            height={72}
+            priority
+            quality={100}
+            className="object-contain"
+          />
+        </div>
+      )}
     </section>
   );
 }
