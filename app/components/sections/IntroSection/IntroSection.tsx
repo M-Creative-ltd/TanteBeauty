@@ -2,8 +2,6 @@ import Image from '../../ui/Image/Image';
 import MarkdownContent from '../../ui/MarkdownContent/MarkdownContent';
 import Button from '../../ui/Button/Button';
 
-import Image from 'next/image';
-
 interface IntroSectionProps {
   image: string;
   logo?: string;
@@ -12,7 +10,6 @@ interface IntroSectionProps {
   ctaTarget?: string;
   secondaryColor?: string;
   primaryColor?: string;
-  accentIcon?: string;
 }
 
 export default function IntroSection({
@@ -23,11 +20,10 @@ export default function IntroSection({
   ctaTarget,
   secondaryColor = '#fff7f5',
   primaryColor = '#014b3c',
-  accentIcon,
 }: IntroSectionProps) {
   return (
     <section 
-      className="py-12 md:min-h-screen md:py-16 lg:py-20 flex items-center relative"
+      className="py-12 md:min-h-screen md:py-16 lg:py-20 flex items-center"
       style={{ backgroundColor: secondaryColor }}
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">
@@ -80,20 +76,6 @@ export default function IntroSection({
           </div>
         </div>
       </div>
-
-      {/* Arrow Icon - Center Bottom */}
-      {accentIcon && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10" style={{ animation: 'bounceDown 2s ease-in-out infinite' }}>
-          <Image
-            src={accentIcon}
-            alt=""
-            width={72}
-            height={72}
-            quality={100}
-            className="object-contain"
-          />
-        </div>
-      )}
     </section>
   );
 }
