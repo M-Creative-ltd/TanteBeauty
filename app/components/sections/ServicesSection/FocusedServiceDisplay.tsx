@@ -16,7 +16,7 @@ export default function FocusedServiceDisplay({
   primaryColor = '#014b3c',
 }: FocusedServiceDisplayProps) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 mb-4 md:mb-16 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 mb-4 md:mb-16 items-center">
       {/* Large Image - Top on Mobile, Left on Desktop */}
       {service.image && (
         <div className="order-1 lg:order-1">

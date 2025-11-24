@@ -19,12 +19,12 @@ interface ProductsSectionProps {
 }
 
 export default function ProductsSection({
-  heading,
-  subtitle,
-  descriptionText,
-  products,
-  primaryColor = '#014b3c',
-}: ProductsSectionProps) {
+    heading,
+    subtitle,
+    descriptionText,
+    products,
+    primaryColor = '#014b3c',
+  }: ProductsSectionProps) {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hoverAreaRef = useRef<HTMLDivElement>(null);
@@ -192,6 +192,7 @@ export default function ProductsSection({
     >
       {/* Image Container - Aspect Square */}
       <div className="relative aspect-square w-full">
+        <Link href={product.slug ? `/products/${product.slug}` : `/products`}>
         {product.mainImage && (
           <>
             <Image
@@ -215,6 +216,7 @@ export default function ProductsSection({
             </div>
           </>
         )}
+        </Link>
       </div>
 
       {/* Learn More Button - Bottom of card */}
@@ -231,7 +233,7 @@ export default function ProductsSection({
   );
 
   return (
-    <section className="py-12 md:py-1 lg:py-2 bg-secondary">
+    <section className="py-12 md:py-2 md:h-[75vh] lg:py-3 bg-secondary">
       <div className="container px-4 min-w-full sm:px-6 md:px-8 lg:px-12">
         {/* Heading and Subtitle */}
         <div className="text-start mb-8 md:mb-12 font-cormorant italic font-semibold">
@@ -267,8 +269,8 @@ export default function ProductsSection({
               onMouseLeave={handleMouseLeave}
               className="cursor-grab active:cursor-grabbing"
               style={{
-                padding: '3rem',
-                margin: '-3rem',
+                padding: '0rem',
+                margin: '0.5rem',
               }}
             >
               {/* Unified Scrollable Row for ALL screens */}
@@ -294,7 +296,7 @@ export default function ProductsSection({
         {/* Description Text */}
         {descriptionText && (
           <div className="text-start">
-            <p className="text-sm font-cormorant italic sm:text-base md:text-lg text-primary py-4 max-w-4xl mx-auto md:mx-0">
+            <p className="text-sm font-cormorant font-semibold italic sm:text-base md:text-lg text-primary py-4 max-w-4xl mx-auto md:mx-0">
               {descriptionText}
             </p>
           </div>

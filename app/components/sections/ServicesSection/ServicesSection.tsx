@@ -3,11 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from '../../ui/Image/Image';
 import FocusedServiceDisplay from './FocusedServiceDisplay';
+import MarkdownContent from '../../ui/MarkdownContent/MarkdownContent';
 
 interface Service {
   title: string;
   categoryLabel?: string;
-  description: React.ReactNode; // Rendered content
+  description: any; // Rendered content
   image?: string;
 }
 

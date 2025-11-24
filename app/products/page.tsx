@@ -12,7 +12,11 @@ export default async function ProductsPage() {
   const productSlugs = await reader.collections.products.list();
   const allProducts = await Promise.all(
     productSlugs.map(async (slug) => {
-      const product = await reader.collections.products.read(slug);
+      const productObject = await reader.collections.products.read(slug);
+      if (!productObject) {
+        return null;
+      }
+      const product = { ...productObject, slug: slug };
       return product;
     })
   );
@@ -43,8 +47,10 @@ export default async function ProductsPage() {
   // Transform products for component
   const transformedProducts = products.map((product) => ({
     name: product.name,
+    slug: product.slug || '',
     mainImage: product.mainImage || undefined,
-  }));
+   }));
+
 
   // Transform services for component
   // Note: services use format: { contentField: 'description' }, so description is accessed via service.description()
