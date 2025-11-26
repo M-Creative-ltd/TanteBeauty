@@ -52,7 +52,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
           <div className="h-full md:h-[90%] overflow-hidden">
             <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-1/2 md:left-0 md:translate-x-0 lg:left-1/6 lg:translate-x-0 lg:-translate-y-1/2 md:-translate-y-1/2 bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
               <div className='inner-circle relative bg-primary p-4 md:p-6 rounded-full w-[90vw] md:w-[80vh] aspect-square z-10'>
-                <img alt={product?.name || ''} src={product?.mainImage || ''} width={0} height={0} className="w-[70%] absolute top-1/2 md:top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 -translate-y-2/3 md:translate-y-1/4 rounded-full border-2 border-secondary aspect-square"/>
+                <img alt={product?.name || ''} src={product?.mainImage || ''} width={0} height={0} className="w-[70%] absolute top-1/2 md:top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-1/9 -translate-y-2/3 md:translate-y-1/5 rounded-full aspect-square"/>
               </div>
             </div>
             {/* Order now button */}

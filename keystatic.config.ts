@@ -209,6 +209,13 @@ export default config({
               directory: 'public/uploads/home/hero',
               publicPath: '/uploads/home/hero',
             }),
+            mobileImage: fields.image({
+              label: 'Hero Image (Mobile)',
+              directory: 'public/uploads/home/hero',
+              publicPath: '/uploads/home/hero',
+              description: 'Optimized for small/mobile screens; desktop and tablet use Hero Image.',
+              validation: { isRequired: false },
+            }),
             logo: fields.image({
               label: 'Hero Logo',
               directory: 'public/uploads/home/hero',

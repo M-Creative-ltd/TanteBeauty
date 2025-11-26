@@ -6,6 +6,7 @@ interface HeroSectionProps {
   ctaLabel: string;
   ctaTarget: string;
   image: string;
+  mobileImage?: string;
   logo?: string;
   accentIcon?: string;
   primaryColor?: string;
@@ -17,6 +18,7 @@ export default function HeroSection({
   ctaLabel,
   ctaTarget,
   image,
+  mobileImage,
   logo,
   accentIcon,
   primaryColor = '#014b3c',
@@ -25,15 +27,40 @@ export default function HeroSection({
     <section className="relative h-screen w-full overflow-hidden md:snap-start">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={image}
-          alt=""
-          fill
-          priority
-          quality={100}
-          className="object-cover"
-          style={{ objectFit: 'cover' }}
-        />
+        {mobileImage ? (
+          <>
+            {/* Mobile hero image */}
+            <Image
+              src={mobileImage}
+              alt=""
+              fill
+              priority
+              quality={95}
+              className="object-cover block md:hidden"
+              style={{ objectFit: 'cover' }}
+            />
+            {/* Desktop / tablet hero image */}
+            <Image
+              src={image}
+              alt=""
+              fill
+              priority
+              quality={100}
+              className="object-cover hidden md:block"
+              style={{ objectFit: 'cover' }}
+            />
+          </>
+        ) : (
+          <Image
+            src={image}
+            alt=""
+            fill
+            priority
+            quality={100}
+            className="object-cover"
+            style={{ objectFit: 'cover' }}
+          />
+        )}
       </div>
 
       {/* Logo - Top Left */}

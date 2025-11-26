@@ -45,6 +45,7 @@ export default async function Homepage() {
           ctaLabel={hero.ctaLabel}
           ctaTarget={hero.ctaTarget}
           image={hero.image}
+          mobileImage={hero.mobileImage || hero.image}
           logo={hero.logo || undefined}
           // accentIcon removed as it is now handled by ScrollArrow
           primaryColor={primaryColor}

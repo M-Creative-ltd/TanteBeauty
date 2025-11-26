@@ -163,8 +163,8 @@ export default function VerticallyScrollableReviewsList({
           scrollbar-width: thin;
         }
         .reviews-scrollbar::-webkit-scrollbar {
-          width: 2px;
-          height: 2px;
+          width: 1px;
+          height: 1px;
         }
         .reviews-scrollbar::-webkit-scrollbar-track {
           background: transparent;
