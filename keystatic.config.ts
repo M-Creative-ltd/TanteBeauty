@@ -182,6 +182,12 @@ export default config({
       path: 'content/home/index',
       schema: {
         title: fields.text({ label: 'Internal Title' }),
+        productDetailLogo: fields.image({
+          label: 'Product Detail Page Logo',
+          directory: 'public/uploads/home/product-detail',
+          publicPath: '/uploads/home/product-detail',
+          validation: { isRequired: false },
+        }),
         hero: fields.object(
           {
             heading: fields.text({ label: 'Heading' }),

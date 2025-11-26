@@ -25,6 +25,7 @@ export default async function ReviewsPage() {
 
   // Transform reviews for components
   const transformedReviews = reviews.map((review) => ({
+    slug: review.slug,
     name: review.name,
     location: review.location || undefined,
     testimonial: review.testimonial,
@@ -35,6 +36,7 @@ export default async function ReviewsPage() {
 
   const transformedFeaturedReview = featuredReview
     ? {
+        slug: featuredReview.slug,
         name: featuredReview.name,
         location: featuredReview.location || undefined,
         testimonial: featuredReview.testimonial,

@@ -70,12 +70,49 @@ export default function ProductsSection({
       const isAtStartBoundary = scrollLeft <= threshold;
       const isAtEndBoundary = scrollLeft >= maxScroll - threshold;
 
-      // Only allow page scroll if we are TRULY at the start/end item AND scrolling in that direction
-      const shouldAllowPageScroll = (isAtFirstItem && isAtStartBoundary && scrollDirection === 'up') || 
-                                   (isAtLastItem && isAtEndBoundary && scrollDirection === 'down');
+      // At the very start with the first item focused and scrolling up: let the page scroll.
+      const shouldAllowPageScroll = isAtFirstItem && isAtStartBoundary && scrollDirection === 'up';
 
       if (shouldAllowPageScroll) {
         // Allow natural page scroll at boundaries
+        return;
+      }
+
+      // When we've reached the horizontal end and keep scrolling down,
+      // step focus through the remaining products until the very last one
+      // has been focused, then allow the page to scroll.
+      if (isAtEndBoundary && scrollDirection === 'down' && products.length > 0) {
+        const lastIndex = products.length - 1;
+
+        if (!isAtLastItem) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const targetIndex = Math.min(currentProductIndex + 1, lastIndex);
+          const productCards = Array.from(container.querySelectorAll('.group')) as HTMLElement[];
+          const targetCard = productCards[targetIndex];
+
+          if (targetCard) {
+            const targetPosition =
+              targetCard.offsetLeft - container.clientWidth / 2 + targetCard.offsetWidth / 2;
+
+            isScrollingRef.current = true;
+            container.scrollTo({
+              left: Math.max(0, Math.min(targetPosition, maxScroll)),
+              behavior: 'smooth',
+            });
+
+            setCurrentProductIndex(targetIndex);
+
+            setTimeout(() => {
+              isScrollingRef.current = false;
+            }, 300);
+          }
+
+          return;
+        }
+
+        // Already at the last item and at the end: let the page scroll.
         return;
       }
 

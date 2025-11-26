@@ -14,7 +14,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
   }
   const home = await reader.singletons.home.read();
   const contact = await reader.singletons.contact.read();
-  const logo = home?.hero?.logo;
+  const logo = home?.productDetailLogo || home?.hero?.logo;
 
   // Format phone number for WhatsApp (remove spaces, +, etc.)
   const phoneNumber = contact?.phoneNumber?.replace(/[^0-9]/g, '') || '';
@@ -22,32 +22,45 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   
   return (
-    <section className="relative h-screen w-full overflow-hidden md:snap-start">
-     <div className="flex md:min-h-vh">
-       {logo && (
-         <div className="absolute top-0 left-4 md:top-0 md:left-6 z-40" style={{ width: '16rem', height: '15rem' }}>
-            <Image
-              src={logo}
-              alt="Tante Beauty Logo"
-              width={480}
-              height={480}
-              priority
-              quality={100}
-              className="object-contain w-full h-full"
-            />
-          </div>
-      )}
-        <div>{product?.name}</div>    
-        <div>
-          <MarkdownContent content={product?.description || ''} />
-        </div>
-        <div className='outer-circle'>
-          <div className='inner-circle'>
-            <Image alt={product?.name || ''} src={product?.mainImage || ''} width={480} height={480}/>
-          </div>
-        </div>
-        <Button label="Order Now" href={whatsappUrl} />
-     </div>
+    <section className="flex relative overflow-hidden h-fit md:snap-start bg-secondary">
+     <div className="flex flex-col md:flex-row w-full md:h-screen">
+      {/*left side*/}
+      <div className="relative md:w-1/2 flex flex-col py-10 md:py-16 gap-8 md:gap-12 mx-auto px-2 md:px-10xl">
+          {/* Logo and product name */}
+          <div className="flex size-fit items-center flex-row mx-auto gap-2">
+          {logo && (
+            <span className="size-fit z-40 h-full w-fit">
+                <Image
+                  src={logo}
+                  alt="Tante Beauty Logo"
+                  width={45}
+                  height={45}
+                  priority
+                  quality={100}
+                  className="object-contain w-full h-full"
+                />
+              </span>
+          )}
+            <span className="flex items-center justify-center mx-3 text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-primary">{product?.name}</span>    
+            </div>
+            {/* Product description */}
+            <div className="text-lg md:text-xl lg:text-2xl md:max-w-2xl mx-auto font-serif h-fit text-primary text-center px-2 md:px-10">
+              <MarkdownContent content={product?.description || ''} />
+            </div>
+          </div>  
+          {/* Product image and designs */}
+          <div className="h-full md:h-[90%] overflow-hidden">
+            <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-1/2 md:left-0 md:translate-x-0 lg:left-1/6 lg:translate-x-0 lg:-translate-y-1/2 md:-translate-y-1/2 bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
+              <div className='inner-circle relative bg-primary p-4 md:p-6 rounded-full w-[90vw] md:w-[80vh] aspect-square z-10'>
+                <img alt={product?.name || ''} src={product?.mainImage || ''} width={0} height={0} className="w-[70%] absolute top-1/2 md:top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 -translate-y-2/3 md:translate-y-1/4 rounded-full border-2 border-secondary aspect-square"/>
+              </div>
+            </div>
+            {/* Order now button */}
+           
+        </div> 
+        <Button label="Order Now" href={whatsappUrl} className="relative mx-auto my-5 md:my-10 md:absolute md:bottom-5 md:left-1/2 md:-translate-x-1/2" />
+      </div> 
+      
     </section>
   );
 }

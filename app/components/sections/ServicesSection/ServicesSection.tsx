@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from '../../ui/Image/Image';
 import FocusedServiceDisplay from './FocusedServiceDisplay';
-import MarkdownContent from '../../ui/MarkdownContent/MarkdownContent';
 
 interface Service {
   title: string;
@@ -78,15 +77,52 @@ export default function ServicesSection({
       const isAtStartBoundary = scrollLeft <= threshold;
       const isAtEndBoundary = scrollLeft >= maxScroll - threshold;
 
-      const shouldAllowPageScroll = (isAtFirstItem && isAtStartBoundary && scrollDirection === 'up') || 
-                                   (isAtLastItem && isAtEndBoundary && scrollDirection === 'down');
+      // At the very start with the first item focused and scrolling up: allow page scroll.
+      const shouldAllowPageScroll = isAtFirstItem && isAtStartBoundary && scrollDirection === 'up';
 
       if (shouldAllowPageScroll) {
-        // Allow natural page scroll at boundaries
         return;
       }
 
-      // Prevent default to stop page scroll
+      // When we've reached the horizontal end and keep scrolling down,
+      // step focus through the remaining services until the very last one
+      // has been focused, then allow the page to scroll.
+      if (isAtEndBoundary && scrollDirection === 'down' && services.length > 0) {
+        const lastIndex = services.length - 1;
+
+        if (!isAtLastItem) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const targetIndex = Math.min(focusedServiceIndex + 1, lastIndex);
+          const buttons = Array.from(container.querySelectorAll('button')) as HTMLElement[];
+          const targetButton = buttons[targetIndex] as HTMLElement | undefined;
+
+          if (targetButton) {
+            const targetPosition =
+              targetButton.offsetLeft - container.clientWidth / 2 + targetButton.offsetWidth / 2;
+
+            isScrollingRef.current = true;
+            container.scrollTo({
+              left: Math.max(0, Math.min(targetPosition, maxScroll)),
+              behavior: 'smooth',
+            });
+
+            setFocusedServiceIndex(targetIndex);
+
+            setTimeout(() => {
+              isScrollingRef.current = false;
+            }, 300);
+          }
+
+          return;
+        }
+
+        // Already at the last item and at the end: let the page scroll.
+        return;
+      }
+
+      // Prevent default to stop page scroll and handle mid-list stepping via debounce.
       e.preventDefault();
       e.stopPropagation();
 
@@ -126,11 +162,12 @@ export default function ServicesSection({
         if (targetIndex !== currentIndex && buttons[targetIndex]) {
           isScrollingRef.current = true;
           const targetButton = buttons[targetIndex];
-          const targetPosition = targetButton.offsetLeft - (container.clientWidth / 2) + (targetButton.offsetWidth / 2);
+          const targetPosition =
+            targetButton.offsetLeft - container.clientWidth / 2 + targetButton.offsetWidth / 2;
 
           container.scrollTo({
             left: Math.max(0, Math.min(targetPosition, maxScroll)),
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
 
           // Update focused index
