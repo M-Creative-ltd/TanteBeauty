@@ -17,7 +17,6 @@ export default async function Post(props: {
 
   const errors = Markdoc.validate(node, markdocConfig);
   if (errors.length) {
-    console.error(errors);
     throw new Error('Invalid content');
   }
 

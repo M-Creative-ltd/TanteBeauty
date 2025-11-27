@@ -2,6 +2,35 @@ import { reader } from '../reader';
 import ProductsSection from '../components/sections/ProductsSection/ProductsSection';
 import ServicesSection from '../components/sections/ServicesSection/ServicesSection';
 import MarkdownContent from '../components/ui/MarkdownContent/MarkdownContent';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await reader.singletons.seo.read();
+  const productSettings = await reader.singletons.productSettings.read();
+  const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
+  const siteName = seo?.siteName || 'Tante Beauty';
+  
+  const title = productSettings?.heading 
+    ? `${productSettings.heading} | ${siteName}`
+    : `Our Products | ${siteName}`;
+  
+  const description = productSettings?.descriptionText 
+    || `Browse our collection of natural beauty products and services. ${seo?.defaultDescription || ''}`;
+
+  return {
+    title,
+    description: description.length > 160 ? description.substring(0, 157) + '...' : description,
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/products`,
+      siteName,
+    },
+    alternates: {
+      canonical: `${siteUrl}/products`,
+    },
+  };
+}
 
 export default async function ProductsPage() {
   // Fetch settings

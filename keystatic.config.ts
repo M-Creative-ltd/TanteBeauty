@@ -483,5 +483,82 @@ export default config({
         }),
       },
     }),
+    seo: singleton({
+      label: 'SEO & Metadata',
+      path: 'content/seo/index',
+      schema: {
+        siteName: fields.text({
+          label: 'Site Name',
+          description: 'Your website name (e.g., "Tante Beauty")',
+          validation: { isRequired: true },
+        }),
+        defaultTitle: fields.text({
+          label: 'Default Page Title',
+          description: 'Default title for pages without specific titles (e.g., "Tante Beauty - Natural Cosmetics")',
+          validation: { isRequired: true },
+        }),
+        defaultDescription: fields.text({
+          label: 'Default Meta Description',
+          description: 'Default description for search engines (150-160 characters recommended)',
+          validation: { isRequired: true },
+        }),
+        defaultKeywords: fields.text({
+          label: 'Default Keywords',
+          description: 'Comma-separated keywords for SEO (e.g., "natural cosmetics, beauty products, skincare")',
+          validation: { isRequired: false },
+        }),
+        siteUrl: fields.text({
+          label: 'Site URL',
+          description: 'Your website URL (e.g., "https://tantebeauty.com")',
+          validation: { isRequired: true },
+        }),
+        ogImage: fields.image({
+          label: 'Open Graph Image',
+          description: 'Default image for social media sharing (1200x630px recommended)',
+          directory: 'public/uploads/seo',
+          publicPath: '/uploads/seo',
+          validation: { isRequired: false },
+        }),
+        twitterHandle: fields.text({
+          label: 'Twitter/X Handle',
+          description: 'Your Twitter/X username without @ (e.g., "tantebeauty")',
+          validation: { isRequired: false },
+        }),
+        twitterCardType: fields.select({
+          label: 'Twitter Card Type',
+          options: [
+            { label: 'Summary', value: 'summary' },
+            { label: 'Summary Large Image', value: 'summary_large_image' },
+          ],
+          defaultValue: 'summary_large_image',
+        }),
+        author: fields.text({
+          label: 'Author/Organization',
+          description: 'Author or organization name',
+          validation: { isRequired: false },
+        }),
+        locale: fields.text({
+          label: 'Locale',
+          description: 'Site locale (e.g., "en_US", "en_GB")',
+          defaultValue: 'en_US',
+          validation: { isRequired: false },
+        }),
+        googleSiteVerification: fields.text({
+          label: 'Google Search Console Verification Code',
+          description: 'Meta tag content for Google verification',
+          validation: { isRequired: false },
+        }),
+        robotsIndex: fields.checkbox({
+          label: 'Allow Search Engine Indexing',
+          description: 'Allow search engines to index this site',
+          defaultValue: true,
+        }),
+        robotsFollow: fields.checkbox({
+          label: 'Allow Search Engine Following',
+          description: 'Allow search engines to follow links',
+          defaultValue: true,
+        }),
+      },
+    }),
   },
 });

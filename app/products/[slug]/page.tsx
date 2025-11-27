@@ -2,14 +2,71 @@ import { reader } from "../../reader";
 import Button from "../../components/ui/Button/Button";
 import MarkdownContent from "../../components/ui/MarkdownContent/MarkdownContent";
 import Image from "../../components/ui/Image/Image";
+import type { Metadata } from 'next';
+
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const product = await reader.collections.products.read(slug);
+  const seo = await reader.singletons.seo.read();
+  const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
+  const siteName = seo?.siteName || 'Tante Beauty';
+
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+    };
+  }
+
+  const title = `${product.name} | ${siteName}`;
+  const description = product.description 
+    ? (typeof product.description === 'string' 
+        ? product.description 
+        : 'Premium natural beauty product from Tante Beauty')
+    : `Discover ${product.name} - a premium natural beauty product from ${siteName}`;
+  
+  const productImage = product.mainImage 
+    ? `${siteUrl}${product.mainImage}` 
+    : seo?.ogImage 
+      ? `${siteUrl}${seo.ogImage}` 
+      : undefined;
+
+  return {
+    title,
+    description: description.length > 160 ? description.substring(0, 157) + '...' : description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `${siteUrl}/products/${slug}`,
+      siteName,
+      images: productImage ? [
+        {
+          url: productImage,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: productImage ? [productImage] : undefined,
+    },
+    alternates: {
+      canonical: `${siteUrl}/products/${slug}`,
+    },
+  };
+}
 
 export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
- console.log('slug', slug);
 
   const product = await reader.collections.products.read(slug);
   if (!product) {
-    console.error(`Product not found: ${slug}`);
     return <div>Product not found!</div>;
   }
   const home = await reader.singletons.home.read();

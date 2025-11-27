@@ -18,7 +18,6 @@ export default async function MarkdownContent({ content, className }: MarkdownCo
 
   const errors = Markdoc.validate(markdocNode, markdocConfig);
   if (errors.length) {
-    console.error('Markdoc validation errors:', errors);
     return null;
   }
 

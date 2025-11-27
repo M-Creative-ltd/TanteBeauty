@@ -1,5 +1,29 @@
 import { reader } from '../reader';
 import ReviewsTopSubsection from '../components/sections/ReviewsTopSubsection/ReviewsTopSubsection';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await reader.singletons.seo.read();
+  const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
+  const siteName = seo?.siteName || 'Tante Beauty';
+  
+  const title = `Customer Reviews | ${siteName}`;
+  const description = `Read authentic customer reviews and testimonials about Tante Beauty products. See real results from our satisfied customers.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/reviews`,
+      siteName,
+    },
+    alternates: {
+      canonical: `${siteUrl}/reviews`,
+    },
+  };
+}
 
 export default async function ReviewsPage() {
   // Fetch all reviews
@@ -7,25 +31,25 @@ export default async function ReviewsPage() {
   const allReviews = await Promise.all(
     reviewSlugs.map(async (slug) => {
       const review = await reader.collections.reviews.read(slug);
-      return review;
+      return { review, slug };
     })
   );
 
   // Filter out null reviews and sort by displayOrder
-  const reviews = allReviews
-    .filter((review): review is NonNullable<typeof review> => review !== null)
-    .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
+  const reviewsWithSlugs = allReviews
+    .filter((item): item is { review: NonNullable<typeof item.review>; slug: string } => item.review !== null)
+    .sort((a, b) => (a.review.displayOrder || 0) - (b.review.displayOrder || 0));
 
   // Find featured review
-  const featuredReview = reviews.find((review) => review.featured) || null;
+  const featuredReviewItem = reviewsWithSlugs.find((item) => item.review.featured) || null;
 
   // Fetch home singleton for theme colors
   const home = await reader.singletons.home.read();
   const primaryColor = home?.theme?.primaryColor || '#014b3c';
 
   // Transform reviews for components
-  const transformedReviews = reviews.map((review) => ({
-    slug: review.slug,
+  const transformedReviews = reviewsWithSlugs.map(({ review, slug }) => ({
+    slug,
     name: review.name,
     location: review.location || undefined,
     testimonial: review.testimonial,
@@ -34,15 +58,15 @@ export default async function ReviewsPage() {
     video: review.video || undefined,
   }));
 
-  const transformedFeaturedReview = featuredReview
+  const transformedFeaturedReview = featuredReviewItem
     ? {
-        slug: featuredReview.slug,
-        name: featuredReview.name,
-        location: featuredReview.location || undefined,
-        testimonial: featuredReview.testimonial,
-        beforeImage: featuredReview.beforeImage || undefined,
-        afterImage: featuredReview.afterImage || undefined,
-        video: featuredReview.video || undefined,
+        slug: featuredReviewItem.slug,
+        name: featuredReviewItem.review.name,
+        location: featuredReviewItem.review.location || undefined,
+        testimonial: featuredReviewItem.review.testimonial,
+        beforeImage: featuredReviewItem.review.beforeImage || undefined,
+        afterImage: featuredReviewItem.review.afterImage || undefined,
+        video: featuredReviewItem.review.video || undefined,
       }
     : undefined;
 

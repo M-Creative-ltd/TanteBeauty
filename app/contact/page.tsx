@@ -1,5 +1,29 @@
 import { reader } from '../reader';
 import Image from '../components/ui/Image/Image';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await reader.singletons.seo.read();
+  const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
+  const siteName = seo?.siteName || 'Tante Beauty';
+  
+  const title = `Contact Us | ${siteName}`;
+  const description = `Get in touch with Tante Beauty. Find our contact information including address, email, and phone number. We'd love to hear from you!`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/contact`,
+      siteName,
+    },
+    alternates: {
+      canonical: `${siteUrl}/contact`,
+    },
+  };
+}
 
 export default async function ContactPage() {
   const contact = await reader.singletons.contact.read();
