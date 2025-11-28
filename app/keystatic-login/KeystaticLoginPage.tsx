@@ -20,13 +20,12 @@ export default function KeystaticLoginPage() {
         body: formData,
       });
 
-      if (response.redirected) {
-        window.location.href = response.url;
-        return;
+      if (response.ok) {
+        window.location.href = '/keystatic';
       }
-
-      if (!response.ok) {
-        setError('Invalid username or password.');
+      else {
+        const data = await response.json();
+        setError(data.error);
       }
     } catch (err) {
       setError('Something went wrong. Please try again.');

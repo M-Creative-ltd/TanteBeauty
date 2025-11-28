@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 
-const ADMIN_COOKIE = 'keystatic_admin';
+const ADMIN_COOKIE = 'AuthToken';
 
 export async function GET(request: Request) {
-  const response = NextResponse.redirect(new URL('/keystatic-login', request.url));
+  
+  const response = NextResponse.redirect(new URL('/', request.url));
   response.cookies.set(ADMIN_COOKIE, '', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

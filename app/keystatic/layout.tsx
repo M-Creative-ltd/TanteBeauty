@@ -1,5 +1,11 @@
 import KeystaticApp from './keystatic';
+import KeystaticLogoutButton from './KeystaticLogoutButton';
 
 export default function RootLayout() {
-  return <KeystaticApp />;
+  return (
+    <>
+      <KeystaticLogoutButton />
+      <KeystaticApp />
+    </>
+  );
 }

@@ -1,9 +1,12 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import jwt from 'jsonwebtoken';
 
-const ADMIN_COOKIE = 'keystatic_admin';
+export const runtime = 'nodejs';
+
+const ADMIN_COOKIE = 'AuthToken';
 
 export function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  const pathname = request.nextUrl.pathname;
 
   // Only protect /keystatic and /api/keystatic here; other routes remain public.
   const isKeystaticPath =
@@ -20,19 +23,33 @@ export function middleware(request: NextRequest) {
 
   // Check for existing auth cookie
   const adminCookie = request.cookies.get(ADMIN_COOKIE);
-  if (adminCookie?.value === '1') {
-    return NextResponse.next();
+
+  const jwtSecretEnv = process.env.JWT_SECRET;
+
+  // If there is no token or no secret configured, fail closed and require login.
+  if (!adminCookie?.value || !jwtSecretEnv) {
+    const response = NextResponse.redirect(new URL('/keystatic-login?error=2', request.url));
+    response.cookies.delete(ADMIN_COOKIE);
+    return response;
   }
 
-  // Not authenticated: redirect to login, preserving the original destination
-  const loginUrl = new URL('/keystatic-login', request.url);
-  if (pathname) {
-    loginUrl.searchParams.set('from', `${pathname}${search || ''}`);
+  // Check if the token is valid
+  try {
+    const decoded = jwt.verify(adminCookie.value, jwtSecretEnv) as { username: string };
+    if (decoded && decoded.username && decoded.username === process.env.KEYSTATIC_ADMIN_USERNAME) {
+      return NextResponse.next();
+    }
+    else {
+      return NextResponse.redirect(new URL('/keystatic-login?error=3', request.url));
+    }
   }
-
-  return NextResponse.redirect(loginUrl);
+  catch (error) {
+    const response = NextResponse.redirect(new URL('/keystatic-login?error=4', request.url));
+    response.cookies.delete(ADMIN_COOKIE);
+    return response;
+  }
 }
-
+  
 export const config = {
   matcher: ['/keystatic/:path*', '/api/keystatic/:path*'],
 };

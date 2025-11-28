@@ -82,7 +82,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
     <section className="flex relative overflow-hidden h-fit md:snap-start bg-secondary">
      <div className="flex flex-col md:flex-row w-full md:h-screen">
       {/*left side*/}
-      <div className="relative md:w-1/2 flex flex-col py-10 md:py-16 gap-8 md:gap-12 mx-auto px-2 md:px-10xl">
+      <div className="relative md:w-1/2 flex flex-col py-10  gap-8 md:gap-12 mx-auto px-2 md:px-10xl justify-center">
           {/* Logo and product name */}
           <div className="flex size-fit items-center flex-row mx-auto gap-2">
           {logo && (
@@ -106,7 +106,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
             </div>
           </div>  
           {/* Product image and designs */}
-          <div className="h-full md:h-[90%] overflow-hidden">
+          <div className="h-full md:h-[90%] md:flex items-center justify-center overflow-hidden">
             <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-1/2 md:left-0 md:translate-x-0 lg:left-1/6 lg:translate-x-0 lg:-translate-y-1/2 md:-translate-y-1/2 bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
               <div className='inner-circle relative bg-primary p-4 md:p-6 rounded-full w-[90vw] md:w-[80vh] aspect-square z-10'>
                 <img alt={product?.name || ''} src={product?.mainImage || ''} width={0} height={0} className="w-[70%] absolute top-1/2 md:top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-1/9 -translate-y-2/3 md:translate-y-1/5 rounded-full aspect-square"/>
