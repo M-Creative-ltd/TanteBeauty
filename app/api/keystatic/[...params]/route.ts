@@ -14,5 +14,11 @@ export async function GET(req: Request) {
     console.log(`[Keystatic API] GET request to: ${url.pathname}`);
     console.log(`[Keystatic API] Active storage kind: ${keystaticConfig.storage.kind}`);
   }
-  return originalGet(req);
+
+  try {
+    return originalGet(req);
+  } catch (err) {
+    console.error('[Keystatic OAuth Error]', err);
+    throw err;
+  }
 }
