@@ -3,9 +3,15 @@ import { config, collection, singleton, fields } from '@keystatic/core';
 export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  storage:
+    process.env.NODE_ENV === 'production'
+      ? {
+          kind: 'github',
+          repo: (process.env.NEXT_PUBLIC_GITHUB_REPO_PATH as `${string}/${string}`) || 'D-Murenzi/TanteBeauty',
+        }
+      : {
+          kind: 'local',
+        },
   collections: {
     posts: collection({
       label: 'Posts',

@@ -35,7 +35,8 @@ export default function HeroSection({
               alt=""
               fill
               priority
-              quality={95}
+              quality={85}
+              sizes="100vw"
               className="object-cover block md:hidden"
               style={{ objectFit: 'cover' }}
             />
@@ -45,7 +46,8 @@ export default function HeroSection({
               alt=""
               fill
               priority
-              quality={100}
+              quality={85}
+              sizes="100vw"
               className="object-cover hidden md:block"
               style={{ objectFit: 'cover' }}
             />
@@ -56,7 +58,8 @@ export default function HeroSection({
             alt=""
             fill
             priority
-            quality={100}
+            quality={85}
+            sizes="100vw"
             className="object-cover"
             style={{ objectFit: 'cover' }}
           />

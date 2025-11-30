@@ -38,7 +38,7 @@ export default function WhySection({
                 src={image}
                 alt={heading}
                 fill
-                quality={100}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-lg"
               />
             </div>

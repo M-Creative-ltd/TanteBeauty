@@ -79,11 +79,17 @@ cp env.example .env
 2. Update the values in `.env`:
    - `KEYSTATIC_ADMIN_USERNAME`: Admin username for Keystatic CMS access
    - `KEYSTATIC_ADMIN_PASSWORD`: Admin password for Keystatic CMS access
+   - `KEYSTATIC_GITHUB_CLIENT_ID`: **Required for Production** - GitHub OAuth Client ID for CMS access
+   - `KEYSTATIC_GITHUB_CLIENT_SECRET`: **Required for Production** - GitHub OAuth Client Secret
+   - `KEYSTATIC_SECRET`: **Required for Production** - A random secret key for Keystatic session management
+   - `NEXT_PUBLIC_GITHUB_REPO_PATH`: Optional - The GitHub repository path (e.g., "username/repo"). Defaults to "D-Murenzi/TanteBeauty"
    - `JWT_SECRET`: **Required** - Secret key for signing JWT tokens (use a strong, random string, min 32 characters)
    - `JWT_EXPIRATION`: Optional - Token expiration time (default: `2h`). Format: `2h`, `24h`, `7d`, or seconds
    - Optionally `ALLOWED_ORIGIN` and any `NEXT_PUBLIC_*` variables
 
 > **Important**: Never commit `.env` to version control.
+
+
 
 #### 4. Run the Development Server
 
@@ -132,8 +138,8 @@ Authentication and session handling are implemented via the `app/api/keystatic-l
 You can deploy this application to any platform that supports Next.js, such as **Vercel**, **Netlify**, or **Railway**.
 
 1. Set the environment variables in your hosting platform (see `env.example` for documentation):
-   - **Required**: `KEYSTATIC_ADMIN_USERNAME`, `KEYSTATIC_ADMIN_PASSWORD`, `JWT_SECRET`
-   - **Optional**: `JWT_EXPIRATION` (defaults to `2h`), `ALLOWED_ORIGIN`, `NEXT_PUBLIC_*` variables
+   - **Required**: `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_ADMIN_USERNAME`, `KEYSTATIC_ADMIN_PASSWORD`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `JWT_SECRET`
+   - **Optional**: `NEXT_PUBLIC_GITHUB_REPO_PATH`, `JWT_EXPIRATION`, `ALLOWED_ORIGIN`
 2. Ensure `NODE_ENV=production` (usually set automatically by the platform).
 3. **Important**: Generate a strong `JWT_SECRET` using a secure random generator (e.g., `openssl rand -hex 32`).
 4. Optionally set `ALLOWED_ORIGIN` to your public domain (e.g. `https://tantebeauty.com`) for CORS headers.

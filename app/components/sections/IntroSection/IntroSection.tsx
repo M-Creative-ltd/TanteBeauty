@@ -35,7 +35,7 @@ export default function IntroSection({
                 src={image}
                 alt="Product display"
                 fill
-                quality={100}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-lg"
               />
             </div>
@@ -51,7 +51,7 @@ export default function IntroSection({
                     src={logo}
                     alt="Logo"
                     fill
-                    quality={100}
+                    sizes="(max-width: 768px) 128px, 160px"
                     className="object-contain"
                   />
                 </div>

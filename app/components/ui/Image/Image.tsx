@@ -12,7 +12,8 @@ export default function Image({
   alt, 
   priority = false, 
   className,
-  quality = 100,
+  quality = 80,
+  sizes,
   ...props 
 }: ImageProps) {
   return (
@@ -22,6 +23,7 @@ export default function Image({
       loading={priority ? undefined : 'lazy'}
       quality={quality}
       className={className || ''}
+      sizes={sizes}
       {...props}
     />
   );
