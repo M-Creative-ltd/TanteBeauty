@@ -10,7 +10,7 @@ const storageMode =
    process.env.KEYSTATIC_GITHUB_CLIENT_ID && 
    process.env.KEYSTATIC_GITHUB_CLIENT_SECRET)
     ? 'github'
-    : 'local';
+    : 'github';
 
 console.log(`[Keystatic] Using storage mode: ${storageMode}`);
 
