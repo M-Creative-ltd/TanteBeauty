@@ -2,9 +2,19 @@ import { config, collection, singleton, fields } from '@keystatic/core';
 
 export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
+// Determine storage mode
+const storageMode = 
+  process.env.KEYSTATIC_STORAGE_KIND === 'github' || 
+  process.env.KEYSTATIC_STORAGE_KIND === 'cloud' || 
+  process.env.NODE_ENV === 'production'
+    ? 'github'
+    : 'local';
+
+console.log(`[Keystatic] Using storage mode: ${storageMode}`);
+
 export default config({
   storage:
-    process.env.NODE_ENV === 'production'
+    storageMode === 'github'
       ? {
           kind: 'github',
           repo: (process.env.NEXT_PUBLIC_GITHUB_REPO_PATH as `${string}/${string}`) || 'D-Murenzi/TanteBeauty',
