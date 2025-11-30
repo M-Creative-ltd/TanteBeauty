@@ -6,7 +6,9 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 const storageMode = 
   process.env.KEYSTATIC_STORAGE_KIND === 'github' || 
   process.env.KEYSTATIC_STORAGE_KIND === 'cloud' || 
-  process.env.NODE_ENV === 'production'
+  (process.env.NODE_ENV === 'production' && 
+   process.env.KEYSTATIC_GITHUB_CLIENT_ID && 
+   process.env.KEYSTATIC_GITHUB_CLIENT_SECRET)
     ? 'github'
     : 'local';
 
