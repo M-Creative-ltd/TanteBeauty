@@ -4,7 +4,10 @@ import MarkdownContent from "../../components/ui/MarkdownContent/MarkdownContent
 import Image from "../../components/ui/Image/Image";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import NotFound from "../../not-found";
+
+type ProductPageProps = {
+  params: Promise<{ slug: string }>;
+};
 
 // Pre-generate static pages for all products so Vercel serves them correctly
 export async function generateStaticParams() {
@@ -13,9 +16,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  props: ProductPageProps
 ): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await props.params;
   const product = await reader.collections.products.read(slug);
   const seo = await reader.singletons.seo.read();
   const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
@@ -70,8 +73,8 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function ProductDetailPage(props: ProductPageProps) {
+  const { slug } = await props.params;
   const product = await reader.collections.products.read(slug);
 
   if (!product) {
