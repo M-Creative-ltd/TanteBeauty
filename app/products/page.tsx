@@ -41,12 +41,14 @@ export default async function ProductsPage() {
   const productSlugs = await reader.collections.products.list();
   const allProducts = await Promise.all(
     productSlugs.map(async (slug) => {
+      console.log(slug);//this is the slug debug line and will be removed later
       const productObject = await reader.collections.products.read(slug);
       if (!productObject) {
         return null;
       }
       const product = { ...productObject, slug: slug };
       return product;
+      console.log(product);//this is the product debug line and will be removed later
     })
   );
 
