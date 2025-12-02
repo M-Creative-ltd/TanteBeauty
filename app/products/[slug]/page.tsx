@@ -3,6 +3,7 @@ import Button from "../../components/ui/Button/Button";
 import MarkdownContent from "../../components/ui/MarkdownContent/MarkdownContent";
 import Image from "../../components/ui/Image/Image";
 import type { Metadata } from 'next';
+import NotFound from "../../not-found";
 
 export async function generateMetadata(
   props: { params: Promise<{ slug: string }> }
@@ -64,10 +65,11 @@ export async function generateMetadata(
 
 export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
-
+  console.log(slug);//this is the slug debug line and will be removed later
   const product = await reader.collections.products.read(slug);
+  console.log(product);//this is the product debug line and will be removed later
   if (!product) {
-    return <div>Product not found!</div>;
+    return <NotFound />;
   }
   const home = await reader.singletons.home.read();
   const contact = await reader.singletons.contact.read();
