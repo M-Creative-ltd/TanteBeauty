@@ -3,6 +3,7 @@ import HeroSection from './components/sections/HeroSection/HeroSection';
 import IntroSection from './components/sections/IntroSection/IntroSection';
 import WhySection from './components/sections/WhySection/WhySection';
 import PhilosophySection from './components/sections/PhilosophySection/PhilosophySection';
+import SourceSection from './components/sections/SourceSection/SourceSection';
 import PromiseSection from './components/sections/PromiseSection/PromiseSection';
 import ScrollArrow from './components/ui/ScrollArrow/ScrollArrow';
 import ScrollSnapEnabler from './components/utils/ScrollSnapEnabler';
@@ -16,7 +17,7 @@ export default async function Homepage() {
     );
   }
 
-  const { hero, intro, why, philosophy, promise, theme } = home;
+  const { hero, intro, why, philosophy, source, promise, theme } = home;
   const primaryColor = theme?.primaryColor || '#014b3c';
   const secondaryColor = theme?.secondaryColor || '#fff7f5';
   const accentColor = theme?.accentColor || '#ffffff';
@@ -30,6 +31,9 @@ export default async function Homepage() {
   
   const philosophyBody = philosophy?.body ? await philosophy.body() : null;
   const philosophyBodyNode = philosophyBody?.node || philosophyBody;
+
+  const sourceBody = source?.body ? await source.body() : null;
+  const sourceBodyNode = sourceBody?.node || sourceBody;
   
   const promiseBody = promise?.body ? await promise.body() : null;
   const promiseBodyNode = promiseBody?.node || promiseBody;
@@ -75,6 +79,14 @@ export default async function Homepage() {
           heading={philosophy.heading}
           body={philosophyBodyNode}
           image={philosophy.image}
+          primaryColor={primaryColor}
+        />
+      )}
+      {source && source.heading && source.image && (
+        <SourceSection
+          heading={source.heading}
+          body={sourceBodyNode}
+          image={source.image}
           primaryColor={primaryColor}
         />
       )}

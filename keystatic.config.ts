@@ -322,6 +322,29 @@ export default config({
           },
           { label: 'Our Philosophy' }
         ),
+        source: fields.object(
+          {
+            heading: fields.text({ label: 'Heading' }),
+            body: fields.markdoc({
+              label: 'Body',
+              options: {
+                bold: true,
+                italic: true,
+                link: true,
+                heading: true,
+                blockquote: true,
+                orderedList: true,
+                unorderedList: true,
+              },
+            }),
+            image: fields.image({
+              label: 'Image',
+              directory: 'public/uploads/home/source',
+              publicPath: '/uploads/home/source',
+            }),
+          },
+          { label: 'Where We Source our Products raw materials from' }
+        ),
         promise: fields.object(
           {
             heading: fields.text({ label: 'Heading' }),
