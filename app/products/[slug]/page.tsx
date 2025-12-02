@@ -3,12 +3,19 @@ import Button from "../../components/ui/Button/Button";
 import MarkdownContent from "../../components/ui/MarkdownContent/MarkdownContent";
 import Image from "../../components/ui/Image/Image";
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import NotFound from "../../not-found";
 
+// Pre-generate static pages for all products so Vercel serves them correctly
+export async function generateStaticParams() {
+  const slugs = await reader.collections.products.list();
+  return slugs.map((slug) => ({ slug }));
+}
+
 export async function generateMetadata(
-  props: { params: Promise<{ slug: string }> }
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  const { slug } = await props.params;
+  const { slug } = params;
   const product = await reader.collections.products.read(slug);
   const seo = await reader.singletons.seo.read();
   const siteUrl = seo?.siteUrl || 'https://tantebeauty.com';
@@ -63,13 +70,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProductDetailPage(props: { params: Promise<{ slug: string }> }) {
-  const { slug } = await props.params;
-  console.log(slug);//this is the slug debug line and will be removed later
+export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const product = await reader.collections.products.read(slug);
-  console.log(product);//this is the product debug line and will be removed later
+
   if (!product) {
-    return <NotFound />;
+    notFound();
   }
   const home = await reader.singletons.home.read();
   const contact = await reader.singletons.contact.read();
