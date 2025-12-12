@@ -25,7 +25,6 @@ source:
   image: /uploads/home/source/source/image.jpeg
 promise:
   heading: Our promise to our clients
-  illustration: /uploads/home/promise/promise/illustration.png
 theme:
   primaryColor: '#014b3c'
   secondaryColor: '#fff7f5'
