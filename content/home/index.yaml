@@ -13,12 +13,12 @@ intro:
   ctaLabel: Explore our Products
   ctaTarget: /products
 why:
-  heading: Why do we do what  we do?
+  heading: Who is Tante and Why Tante?
   image: /uploads/home/why/why/image.png
   highlightImage: /uploads/home/why/why/highlightImage.png
   highlightCaption: Image showing a black bottle that contains a syrum for skin care
 philosophy:
-  heading: Our philosophy
+  heading: Why do we do what  we do?
   image: /uploads/home/philosophy/philosophy/image.png
 source:
   heading: We source raw materials from local farmers
