@@ -223,13 +223,13 @@ export default function ProductsSection({
   };
 
   const renderProductCard = (product: Product) => (
-    <div
+    <Link
+      href={product.slug ? `/products/${product.slug}` : `/products`}
       key={product.name}
       className={`relative border-2 border-primary overflow-hidden group flex-shrink-0 snap-center w-[85%] md:w-[40%] lg:w-[22%] flex flex-col`}
     >
       {/* Image Container - Aspect Square */}
       <div className="relative aspect-square w-full">
-        <Link href={product.slug ? `/products/${product.slug}` : `/products`}>
         {product.mainImage && (
           <>
             <Image
@@ -253,20 +253,18 @@ export default function ProductsSection({
             </div>
           </>
         )}
-        </Link>
       </div>
 
       {/* Learn More Button - Bottom of card */}
-      <Link 
-        href={product.slug ? `/products/${product.slug}` : `/products`}
-        className="w-full py-3 text-center font-serif font-bold transition-colors hover:opacity-90 bg-secondary"
+      <div 
+        className="w-full py-3 text-center font-serif font-bold transition-colors hover:opacity-90 text-secondary"
         style={{
-          color: primaryColor,
+          backgroundColor: primaryColor,
         }}
       >
         Learn More
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 
   return (
