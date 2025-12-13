@@ -103,7 +103,7 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
   const descriptionRenderable = descriptionNode?.node || descriptionNode || '';
   
   return (
-    <section className="flex relative overflow-hidden h-fit md:snap-start bg-secondary">
+    <section className="flex flex-col relative overflow-hidden h-fit md:snap-start bg-secondary">
       <div className="flex flex-col md:flex-row w-full md:h-screen">
         {/* Left side: logo, name, description */}
         <div className="relative md:w-1/2 flex flex-col py-10 gap-8 md:gap-12 mx-auto px-2 md:px-10xl justify-center">
@@ -132,10 +132,10 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
         </div>
 
         {/* Right side: product image */}
-        <div className="md:w-1/2 flex items-center justify-center md:justify-end overflow-hidden md:overflow-visible">
+        <div className="md:w-1/2 flex items-center justify-center overflow-hidden">
           {product?.mainImage ? (
             <div className="h-full md:h-[90%] md:flex items-center justify-center md:justify-end overflow-hidden md:overflow-visible">
-              <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-0 md:left-auto md:translate-x-0 md:translate-y-0 md:mr-[-5vw] lg:mr-[-6vw] bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
+              <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-20 md:top-0 md:left-auto md:translate-x-2 md:translate-y-0 md:mr-[-5vw] lg:mr-[-6vw] lg:translate-x-40 bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
                 <div className='inner-circle relative bg-primary p-4 md:p-6 rounded-full w-[90vw] md:w-[80vh] aspect-square z-10'>
                   <img
                     alt={productEntry?.name || ''}
@@ -156,7 +156,7 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
           label="Order Now"
           href={whatsappUrl}
           className="relative mx-auto my-5 md:my-10 md:absolute md:bottom-5 md:left-1/2 md:-translate-x-1/2"
-                  />
+        />
       </div>
     </section>
   );
