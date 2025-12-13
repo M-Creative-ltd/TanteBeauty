@@ -222,15 +222,10 @@ export default function ProductsSection({
     isHoveringRef.current = false;
   };
 
-  const resolveProductHref = (product: Product) => {
-    const pathSlug = (product.slug || product.name || '').trim();
-    return pathSlug ? `/products/${encodeURIComponent(pathSlug)}` : '/products';
-  };
-
   const renderProductCard = (product: Product) => (
     <Link
-      href={resolveProductHref(product)}
-      key={`${product.slug || product.name}`}
+      href={product.slug ? `/products/${product.slug}` : `/products`}
+      key={product.name}
       className={`relative border-2 border-primary overflow-hidden group flex-shrink-0 snap-center w-[85%] md:w-[40%] lg:w-[22%] flex flex-col`}
     >
       {/* Image Container - Aspect Square */}

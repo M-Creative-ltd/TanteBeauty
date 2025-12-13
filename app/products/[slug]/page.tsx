@@ -121,7 +121,7 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
                 />
               </span>
             )}
-            <span className="flex items-center justify-center mx-3 text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-primary">
+            <span className="flex items-center justify-center mx-3 text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-primary">
               {productEntry?.name || slug}
             </span>
           </div>
@@ -132,10 +132,10 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
         </div>
 
         {/* Right side: product image */}
-        <div className="md:w-1/2 flex items-center justify-center overflow-hidden">
+        <div className="md:w-1/2 flex items-center justify-center md:justify-end overflow-hidden md:overflow-visible">
           {product?.mainImage ? (
-            <div className="h-full md:h-[90%] md:flex items-center justify-center overflow-hidden">
-              <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-1/2 md:left-0 md:translate-x-0 lg:left-1/6 lg:translate-x-0 lg:-translate-y-1/2 md:-translate-y-1/2 bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
+            <div className="h-full md:h-[90%] md:flex items-center justify-center md:justify-end overflow-hidden md:overflow-visible">
+              <div className='outer-circle relative top-1/4 left-1/2 -translate-x-1/2 translate-y-1 md:top-0 md:left-auto md:translate-x-0 md:translate-y-0 md:mr-[-5vw] lg:mr-[-6vw] bg-[#8e9f84] p-3 md:p-4 rounded-full size-fit'>
                 <div className='inner-circle relative bg-primary p-4 md:p-6 rounded-full w-[90vw] md:w-[80vh] aspect-square z-10'>
                   <img
                     alt={productEntry?.name || ''}
@@ -155,8 +155,8 @@ export default async function ProductDetailPage({ params }: { params: ProductPar
         <Button
           label="Order Now"
           href={whatsappUrl}
-          className="relative mx-auto my-5 md:my-10"
-        />
+          className="relative mx-auto my-5 md:my-10 md:absolute md:bottom-5 md:left-1/2 md:-translate-x-1/2"
+                  />
       </div>
     </section>
   );

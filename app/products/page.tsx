@@ -41,11 +41,15 @@ export default async function ProductsPage() {
   const productSlugs = await reader.collections.products.list();
   const allProducts = await Promise.all(
     productSlugs.map(async (slug) => {
+      console.log(`slug: ${slug}`);//this is the slug debug line and will be removed later
       const productObject = await reader.collections.products.read(slug);
+      console.log(`productObject: ${productObject}`);//this is the product object debug line and will be removed later
       if (!productObject) {
         return null;
       }
-      return { ...productObject, slug };
+      const product = { ...productObject, slug: slug };
+      return product;
+      console.log(`full product: ${product}`);//this is the product debug line and will be removed later
     })
   );
 
@@ -73,17 +77,11 @@ export default async function ProductsPage() {
   const primaryColor = home?.theme?.primaryColor || '#014b3c';
 
   // Transform products for component
-  const transformedProducts = products
-    .map((product) => {
-      const pathSlug = (product.slug || product.name || '').trim();
-      if (!pathSlug) return null;
-      return {
-        name: product.name || pathSlug,
-        slug: pathSlug,
-        mainImage: product.mainImage || undefined,
-      };
-    })
-    .filter((p): p is NonNullable<typeof p> => p !== null);
+  const transformedProducts = products.map((product) => ({
+    name: product.name,
+    slug: product.slug || '',
+    mainImage: product.mainImage || undefined,
+   }));
 
 
   // Transform services for component
