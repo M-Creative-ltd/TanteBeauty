@@ -12,6 +12,10 @@ type ProductPageProps = {
 // Pre-generate static pages for all products so Vercel serves them correctly
 export async function generateStaticParams() {
   const slugs = await reader.collections.products.list();
+  
+  // The 'slugs' array contains the filenames without extension (which act as slugs)
+  // Example: ['Acne cream', 'Acne bar soap', ...]
+  // We map these directly to the { slug } param object required by Next.js
   return slugs.map((slug) => ({ slug }));
 }
 
