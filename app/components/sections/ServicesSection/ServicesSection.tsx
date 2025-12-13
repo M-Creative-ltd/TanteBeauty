@@ -331,7 +331,8 @@ export default function ServicesSection({
                         src={service.image}
                         alt={service.title}
                         fill
-                        quality={100}
+                        quality={90}
+                        sizes="(max-width: 768px) 40vw, (max-width: 1024px) 25vw, 16vw"
                         className="object-cover"
                       />
                       {/* Category Label Overlay - Top Left */}

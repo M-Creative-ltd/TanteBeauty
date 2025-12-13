@@ -12,7 +12,7 @@ export default function Image({
   alt, 
   priority = false, 
   className,
-  quality = 80,
+  quality = 85,
   sizes,
   ...props 
 }: ImageProps) {

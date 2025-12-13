@@ -104,7 +104,7 @@ export default async function ProductDetailPage(props: ProductPageProps) {
                   width={45}
                   height={45}
                   priority
-                  quality={100}
+                  quality={90}
                   className="object-contain w-full h-full"
                 />
               </span>

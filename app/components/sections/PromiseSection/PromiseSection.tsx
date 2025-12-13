@@ -48,6 +48,7 @@ export default function PromiseSection({
                   src={illustration}
                   alt="Promise illustration"
                   fill
+                  quality={90}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain animate-pinky-promise"
                   style={{ transformStyle: 'preserve-3d' }}

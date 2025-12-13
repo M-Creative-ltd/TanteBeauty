@@ -92,7 +92,8 @@ export default function MediaPanel({ beforeImage, afterImage, video }: MediaPane
             src={beforeImage}
             alt="Before"
             fill
-            quality={100}
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover"
             priority
           />
@@ -106,7 +107,8 @@ export default function MediaPanel({ beforeImage, afterImage, video }: MediaPane
             src={afterImage}
             alt="After"
             fill
-            quality={100}
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover"
             priority
           />

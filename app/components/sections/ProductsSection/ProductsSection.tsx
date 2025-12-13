@@ -236,7 +236,8 @@ export default function ProductsSection({
               src={product.mainImage}
               alt={product.name}
               fill
-              quality={100}
+              quality={90}
+              sizes="(max-width: 768px) 85vw, (max-width: 1024px) 40vw, 22vw"
               className="object-cover aspect-square transition-transform duration-300 group-hover:scale-105"
             />
             {/* Category Name Overlay - Top Left */}

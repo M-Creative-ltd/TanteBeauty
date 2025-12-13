@@ -31,7 +31,8 @@ export default function FocusedServiceDisplay({
               src={service.image}
               alt={service.title}
               fill
-              quality={100}
+              quality={90}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
               priority
             />

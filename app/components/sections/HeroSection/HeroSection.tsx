@@ -75,7 +75,7 @@ export default function HeroSection({
             width={480}
             height={480}
             priority
-            quality={100}
+            quality={90}
             className="object-contain w-full h-full"
           />
         </div>

@@ -25,6 +25,7 @@ export default async function NotFound() {
               height={64}
               className="h-16 w-auto object-contain"
               priority
+              quality={90}
             />
           </div>
         )}

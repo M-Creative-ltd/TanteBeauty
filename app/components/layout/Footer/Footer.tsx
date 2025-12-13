@@ -25,7 +25,7 @@ export default async function Footer() {
                   alt="Tante Beauty Logo"
                   width={240}
                   height={240}
-                  quality={100}
+                  quality={90}
                   className="object-contain w-full h-full"
                 />
               </div>
@@ -49,7 +49,7 @@ export default async function Footer() {
                     alt="Tante Beauty Logo"
                     width={160}
                     height={160}
-                    quality={100}
+                    quality={90}
                     className="object-contain w-full h-full"
                   />
                 </div>
