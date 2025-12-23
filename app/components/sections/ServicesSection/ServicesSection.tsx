@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Image from '../../ui/Image/Image';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import FocusedServiceDisplay from './FocusedServiceDisplay';
 
 interface Service {
@@ -23,11 +22,19 @@ export default function ServicesSection({
   primaryColor = '#014b3c',
 }: ServicesSectionProps) {
   const [focusedServiceIndex, setFocusedServiceIndex] = useState<number>(0);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hoverAreaRef = useRef<HTMLDivElement>(null);
   const isHoveringRef = useRef(false);
   const scrollDebounceRef = useRef<NodeJS.Timeout | null>(null);
   const isScrollingRef = useRef(false);
+
+  const scrollBehavior = useMemo<ScrollBehavior>(
+    () => (prefersReducedMotion ? 'auto' : 'smooth'),
+    [prefersReducedMotion]
+  );
 
   // Update focused service index when services change
   useEffect(() => {
@@ -35,6 +42,15 @@ export default function ServicesSection({
       setFocusedServiceIndex(0);
     }
   }, [services, focusedServiceIndex]);
+
+  // Respect prefers-reduced-motion to tone down animation intensity
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    handleChange();
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   // Add native wheel event listener with passive: false to ensure preventDefault works
   useEffect(() => {
@@ -95,17 +111,17 @@ export default function ServicesSection({
           e.stopPropagation();
 
           const targetIndex = Math.min(focusedServiceIndex + 1, lastIndex);
-          const buttons = Array.from(container.querySelectorAll('button')) as HTMLElement[];
-          const targetButton = buttons[targetIndex] as HTMLElement | undefined;
+          const slides = Array.from(container.querySelectorAll('[data-service-slide]')) as HTMLElement[];
+          const targetSlide = slides[targetIndex] as HTMLElement | undefined;
 
-          if (targetButton) {
+          if (targetSlide) {
             const targetPosition =
-              targetButton.offsetLeft - container.clientWidth / 2 + targetButton.offsetWidth / 2;
+              targetSlide.offsetLeft - container.clientWidth / 2 + targetSlide.offsetWidth / 2;
 
             isScrollingRef.current = true;
             container.scrollTo({
               left: Math.max(0, Math.min(targetPosition, maxScroll)),
-              behavior: 'smooth',
+              behavior: scrollBehavior,
             });
 
             setFocusedServiceIndex(targetIndex);
@@ -131,16 +147,16 @@ export default function ServicesSection({
         if (!scrollContainerRef.current) return;
         
         const container = scrollContainerRef.current;
-        const buttons = Array.from(container.querySelectorAll('button')) as HTMLElement[];
-        if (buttons.length === 0) return;
+        const slides = Array.from(container.querySelectorAll('[data-service-slide]')) as HTMLElement[];
+        if (slides.length === 0) return;
 
         // Find current item closest to center
         const containerCenter = container.scrollLeft + container.clientWidth / 2;
         let currentIndex = 0;
         let minDistance = Infinity;
 
-        buttons.forEach((button, index) => {
-          const itemCenter = button.offsetLeft + button.offsetWidth / 2;
+        slides.forEach((slide, index) => {
+          const itemCenter = slide.offsetLeft + slide.offsetWidth / 2;
           const distance = Math.abs(containerCenter - itemCenter);
           if (distance < minDistance) {
             minDistance = distance;
@@ -152,22 +168,22 @@ export default function ServicesSection({
         let targetIndex: number;
         if (scrollDirection === 'down') {
           // Scrolling down = move to next item (right)
-          targetIndex = Math.min(currentIndex + 1, buttons.length - 1);
+          targetIndex = Math.min(currentIndex + 1, slides.length - 1);
         } else {
           // Scrolling up = move to previous item (left)
           targetIndex = Math.max(currentIndex - 1, 0);
         }
 
         // Only scroll if target is different from current
-        if (targetIndex !== currentIndex && buttons[targetIndex]) {
+        if (targetIndex !== currentIndex && slides[targetIndex]) {
           isScrollingRef.current = true;
-          const targetButton = buttons[targetIndex];
+          const targetSlide = slides[targetIndex];
           const targetPosition =
-            targetButton.offsetLeft - container.clientWidth / 2 + targetButton.offsetWidth / 2;
+            targetSlide.offsetLeft - container.clientWidth / 2 + targetSlide.offsetWidth / 2;
 
           container.scrollTo({
             left: Math.max(0, Math.min(targetPosition, maxScroll)),
-            behavior: 'smooth',
+            behavior: scrollBehavior,
           });
 
           // Update focused index
@@ -190,7 +206,7 @@ export default function ServicesSection({
         clearTimeout(scrollDebounceRef.current);
       }
     };
-  }, [services.length, focusedServiceIndex]); // Add focusedServiceIndex to deps for accurate boundary checks
+  }, [services.length, focusedServiceIndex, scrollBehavior]); // Add focusedServiceIndex to deps for accurate boundary checks
 
   if (services.length === 0) {
     return null;
@@ -198,10 +214,23 @@ export default function ServicesSection({
 
   const currentFocused = services[focusedServiceIndex] || services[0];
 
+  const updateBoundaries = () => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const scrollLeft = container.scrollLeft;
+    const clientWidth = container.clientWidth;
+    const scrollWidth = container.scrollWidth;
+    const maxScroll = scrollWidth - clientWidth;
+    const threshold = 24;
+    setIsAtStart(scrollLeft <= threshold);
+    setIsAtEnd(scrollLeft >= maxScroll - threshold);
+  };
+
   const handleScroll = () => {
     if (!scrollContainerRef.current) return;
     
     const container = scrollContainerRef.current;
+    updateBoundaries();
     
     // Relaxed Edge Handling:
     // Removed aggressive force-set logic. 
@@ -213,17 +242,16 @@ export default function ServicesSection({
     let closestIndex = 0;
     let minDistance = Infinity;
 
-    const buttons = Array.from(container.querySelectorAll('button'));
-    buttons.forEach((button, index) => {
-        const element = button as HTMLElement;
-        // Calculate center relative to scroll parent
-        const itemCenter = element.offsetLeft + element.offsetWidth / 2;
-        const distance = Math.abs(containerCenter - itemCenter);
-        
-        if (distance < minDistance) {
-            minDistance = distance;
-            closestIndex = index;
-        }
+    const slides = Array.from(container.querySelectorAll('[data-service-slide]'));
+    slides.forEach((slide, index) => {
+      const element = slide as HTMLElement;
+      const itemCenter = element.offsetLeft + element.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - itemCenter);
+      
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
     });
 
     if (closestIndex !== focusedServiceIndex) {
@@ -239,25 +267,55 @@ export default function ServicesSection({
     isHoveringRef.current = false;
   };
 
-  const handleItemClick = (index: number) => {
-    setFocusedServiceIndex(index);
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const buttons = Array.from(container.querySelectorAll('button'));
-      const targetButton = buttons[index] as HTMLElement;
+  const scrollToIndex = (targetIndex: number) => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const slides = Array.from(container.querySelectorAll('[data-service-slide]'));
+    const targetSlide = slides[targetIndex] as HTMLElement | undefined;
+    if (!targetSlide) return;
 
-      if (targetButton) {
-        container.scrollTo({
-            left: targetButton.offsetLeft - (container.clientWidth / 2) + (targetButton.offsetWidth / 2),
-            behavior: 'smooth'
-        });
-      }
+    const targetPosition =
+      targetSlide.offsetLeft - container.clientWidth / 2 + targetSlide.offsetWidth / 2;
+
+    container.scrollTo({
+      left: Math.max(0, Math.min(targetPosition, container.scrollWidth)),
+      behavior: scrollBehavior,
+    });
+    setFocusedServiceIndex(targetIndex);
+  };
+
+  const handleArrowClick = (direction: 'prev' | 'next') => {
+    const lastIndex = services.length - 1;
+    const nextIndex =
+      direction === 'next'
+        ? Math.min(focusedServiceIndex + 1, lastIndex)
+        : Math.max(focusedServiceIndex - 1, 0);
+    scrollToIndex(nextIndex);
+  };
+
+  useEffect(() => {
+    updateBoundaries();
+  }, [focusedServiceIndex, services.length]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    updateBoundaries();
+  }, []);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      handleArrowClick('next');
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      handleArrowClick('prev');
     }
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-secondary">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl w-full">
+    <section className="py-12 md:py-16 lg:py-20 bg-secondary md:h-[98vh] gap-12 flex items-stretch">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-12 w-full flex flex-col h-full">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-12">
           <h2
@@ -266,95 +324,112 @@ export default function ServicesSection({
           >
             {heading}
           </h2>
+          <p className="mt-3 text-sm md:hidden text-primary/80">
+            Swipe to explore all services →
+          </p>
         </div>
-
-        {/* Focused Service Display - Top Section */}
-        {currentFocused && (
-          <div className="mb-8 md:mb-12">
-            <FocusedServiceDisplay
-              service={currentFocused}
-              primaryColor={primaryColor}
-            />
-          </div>
-        )}
 
         {/* Hover Area with 3rem padding around the scroll list */}
         <div
           ref={hoverAreaRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="flex flex-col justify-center cursor-grab active:cursor-grabbing pt-8 -mt-8"
+          className="flex flex-col justify-between md:justify-center gap-6 cursor-grab active:cursor-grabbing pt-8 -mt-8 md:min-h-[70vh] lg:min-h-[75vh]"
         >
           {/* Service Scroll List - Bottom Section */}
-          <div 
-            ref={scrollContainerRef}
-            onScroll={handleScroll}
-            className="flex overflow-x-auto items-center snap-x snap-mandatory gap-4 md:gap-6 py-6 md:py-8 no-scrollbar"
-            style={{
-              scrollbarWidth: 'none', /* Firefox */
-              msOverflowStyle: 'none', /* IE and Edge */
-            }}
-          >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-            
-            {/* Add explicit padding container to allow first/last items to be centered/aligned
-                Mobile: Keep somewhat centered (30vw).
-                MD+: Start at the start of screen (approx 2rem).
-            */}
-            <div className="min-w-[30vw] md:min-w-[2rem]" />
+          <div className="relative">
+            {/* Gradients to hint overflow */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-secondary via-secondary/70 to-transparent" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-secondary via-secondary/70 to-transparent" aria-hidden="true" />
 
+            <div 
+              ref={scrollContainerRef}
+              onScroll={handleScroll}
+              onKeyDown={handleKeyDown}
+              className="flex overflow-x-auto items-stretch snap-x snap-mandatory gap-4 sm:gap-6 md:gap-8 lg:gap-10 py-6 md:py-10 lg:py-12 no-scrollbar focus:outline-none md:h-[575px]"
+              style={{
+                scrollbarWidth: 'none', /* Firefox */
+                msOverflowStyle: 'none', /* IE and Edge */
+              }}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Service list, horizontal scroll"
+              tabIndex={0}
+            >
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+              
+              {/* Add explicit padding container to allow first/last items to be centered/aligned */}
+              <div className="min-w-[6vw] sm:min-w-[4vw] md:min-w-[3vw]" />
+
+              {services.map((service, index) => (
+                <div
+                  key={service.title}
+                  data-service-slide
+                  className="relative flex-shrink-0 w-[94vw] sm:w-[90vw] md:w-[88vw] lg:w-[86vw] xl:w-[84vw] 2xl:w-[80vw] snap-center"
+                  aria-label={`Service ${service.title}`}
+                  aria-roledescription="slide"
+                >
+                  <FocusedServiceDisplay
+                    service={service}
+                    primaryColor={primaryColor}
+                  />
+                </div>
+              ))}
+
+              <div className="min-w-[6vw] sm:min-w-[4vw] md:min-w-[3vw]" />
+            </div>
+
+            {/* Arrow controls (desktop) */}
+            <div className="hidden md:flex items-center justify-between pointer-events-none">
+              <button
+                type="button"
+                onClick={() => handleArrowClick('prev')}
+                className={`pointer-events-auto absolute left-0 -translate-x-[20px] top-1/2 -translate-y-1/2 rounded-full border bg-white/90 p-2 shadow-lg transition hover:bg-white focus:outline-none focus-visible:ring-2 hover:scale-110 active:scale-95`}
+                style={{ borderColor: primaryColor, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', width: '25px' }}
+                aria-label="Scroll to previous service"
+                disabled={isAtStart}
+              >
+                <span className="text-xl" style={{ color: primaryColor }}>‹</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleArrowClick('next')}
+                className={`pointer-events-auto absolute right-0 translate-x-[20px] top-1/2 -translate-y-1/2 rounded-full border bg-white/90 p-2 shadow-lg transition hover:bg-white focus:outline-none focus-visible:ring-2 hover:scale-110 active:scale-95`}
+                style={{ borderColor: primaryColor, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', width: '25px' }}
+                aria-label="Scroll to next service"
+                disabled={isAtEnd}
+              >
+                <span className="text-xl" style={{ color: primaryColor }}>›</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Pagination dots */}
+          <div className="mt-4 md:mt-6 mb-4 md:mb-8 flex items-center justify-center gap-2" aria-label="Service pagination">
             {services.map((service, index) => {
-              const isFocused = index === focusedServiceIndex;
+              const isActive = index === focusedServiceIndex;
               return (
                 <button
-                  key={service.title}
-                  onClick={() => handleItemClick(index)}
-                  className={`relative flex-shrink-0 w-[40%] md:w-[25%] lg:w-[16.666%] aspect-square snap-center overflow-hidden rounded-lg transition-all duration-300 ${
-                    isFocused
-                      ? 'ring-4 ring-offset-2'
-                      : 'opacity-75 hover:opacity-100'
-                  }`}
+                  key={`${service.title}-dot`}
+                  onClick={() => scrollToIndex(index)}
+                  className={`h-2.5 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2`}
                   style={{
-                    // @ts-ignore
-                    '--tw-ring-color': isFocused ? primaryColor : 'transparent',
-                    borderColor: isFocused ? primaryColor : 'transparent',
+                    width: isActive ? '26px' : '12px',
+                    opacity: isActive ? 1 : 0.5,
+                    backgroundColor: primaryColor,
                   }}
-                  aria-label={`View ${service.title} service`}
-                >
-                  {service.image && (
-                    <>
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        quality={90}
-                        sizes="(max-width: 768px) 40vw, (max-width: 1024px) 25vw, 16vw"
-                        className="object-cover"
-                      />
-                      {/* Category Label Overlay - Top Left */}
-                      {service.categoryLabel && (
-                        <div className="absolute top-2 left-2 md:top-3 md:left-3 z-10">
-                          <span
-                            className="text-xs sm:text-sm md:text-base font-serif font-bold px-2 py-1 rounded"
-                            style={{
-                              color: primaryColor,
-                              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            }}
-                          >
-                            {service.categoryLabel}
-                          </span>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </button>
+                  aria-label={`Go to ${service.title}`}
+                  aria-pressed={isActive}
+                />
               );
             })}
-            <div className="min-w-[30vw] md:min-w-[2rem]" />
+          </div>
+          <div className="sr-only" aria-live="polite" aria-atomic="true">
+            {`Viewing service ${focusedServiceIndex + 1} of ${services.length}: ${currentFocused?.title || ''}`}
           </div>
         </div>
       </div>
