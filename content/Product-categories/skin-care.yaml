@@ -2,4 +2,30 @@ category_name: Skin Care
 description: >-
   Restoring, protecting, and brightening the skin using natural, science-backed
   ingredients.
-sub_categories: []
+sub_categories:
+  - sub_category_name: Cleansers & Soaps
+    products:
+      - product_name: Acne Bar Soap
+        price:
+          amount: 3001
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/0/products/0/image_url.jpg
+        details:
+          description: >-
+            Acne bar soaps have evolved significantly from the harsh, drying
+            bricks of the past. Today, they are popular for being eco-friendly,
+            cost-effective, and highly effective for both face and body acne
+            (like "bacne").
+  - sub_category_name: Toners & mists
+    products:
+      - product_name: Glycolic Acid Toner
+        price:
+          amount: 10000
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/1/products/0/image_url.jpg
+        details:
+          description: >-
+            Acne bar soaps have evolved significantly from the harsh, drying
+            bricks of the past. Today, they are popular for being eco-friendly,
+            cost-effective, and highly effective for both face and body acne
+            (like "bacne").
