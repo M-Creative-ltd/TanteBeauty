@@ -1,0 +1,45 @@
+category_name: Hair Care
+description: >-
+  Strengthening, moisturizing, and stimulating healthy hair growth using herbal
+  extracts.
+sub_categories:
+  - sub_category_name: ' Hair Growth & Strengthening'
+    products:
+      - product_name: Hair Growth Oil (with rosemary, cloves & moringa)
+        price:
+          amount: 5000
+          currency: Rwf
+        image_url: /uploads/products/hair-care/sub_categories/0/products/0/image_url.jpg
+        details:
+          description: >-
+            Here’s a simple hair growth oil guide you can use at home or look
+            for ingredients/products with these benefits:
+
+
+            Here’s a simple hair growth oil guide you can use at home or look
+            for ingredients/products with these benefits:
+      - product_name: Beard Growth Oil
+        price:
+          amount: 10000
+          currency: Rwf
+        image_url: /uploads/products/hair-care/sub_categories/0/products/1/image_url.jpg
+        details:
+          description: >-
+            Beard Growth OilBeard Growth OilBeard Growth OilBeard Growth
+            OilBeard Growth Oil
+
+            Beard Growth OilBeard Growth OilBeard Growth Oil
+  - sub_category_name: Moisture & Styling
+    products:
+      - product_name: Leave-In Conditioner
+        price:
+          amount: 20000
+          currency: Rwf
+        image_url: /uploads/products/hair-care/sub_categories/1/products/0/image_url.jpg
+        details:
+          description: >-
+            Leave-In ConditionerLeave-In ConditionerLeave-In ConditionerLeave-In
+            ConditionerLeave-In Conditioner
+
+            Leave-In ConditionerLeave-In ConditionerLeave-In ConditionerLeave-In
+            Conditioner

@@ -16,6 +16,19 @@ sub_categories:
             bricks of the past. Today, they are popular for being eco-friendly,
             cost-effective, and highly effective for both face and body acne
             (like "bacne").
+      - product_name: Face and body soap
+        price:
+          amount: 2000
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/0/products/1/image_url.jpg
+        details:
+          description: >-
+            Face and body soapFace and body soapFace and body soapFace and body
+            soapFace and body soap
+
+            Face and body soapFace and body soapFace and body soap
+
+            Face and body soapFace and body soap
   - sub_category_name: Toners & mists
     products:
       - product_name: Glycolic Acid Toner
@@ -29,3 +42,137 @@ sub_categories:
             bricks of the past. Today, they are popular for being eco-friendly,
             cost-effective, and highly effective for both face and body acne
             (like "bacne").
+      - product_name: Salicylic Acid Toner
+        price:
+          amount: 3200
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpg
+        details:
+          description: >-
+            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid
+            TonerSalicylic Acid Toner
+
+            Salicylic Acid TonerSalicylic Acid Toner
+
+            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid Toner
+      - product_name: Hydrating Toner
+        price:
+          amount: 200
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/1/products/2/image_url.jpg
+        details:
+          description: |-
+            Hydrating TonerHydrating TonerHydrating TonerHydrating Toner
+            Hydrating TonerHydrating Toner
+            Hydrating Toner
+            Hydrating TonerHydrating TonerHydrating Toner
+            Hydrating Toner
+  - sub_category_name: Serums & Treatments
+    products:
+      - product_name: Vitamin C Serum
+        price:
+          amount: 100
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpg
+        details:
+          description: |-
+            Vitamin C SerumVitamin C SerumVitamin C SerumVitamin C Serum
+            Vitamin C SerumVitamin C Serum
+            v
+      - product_name: Niacinamide Serum
+        price:
+          amount: 503
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/2/products/1/image_url.jpg
+        details:
+          description: |-
+            Niacinamide SerumNiacinamide SerumNiacinamide Serum
+            Niacinamide SerumNiacinamide SerumNiacinamide Serum
+      - product_name: Anti-Aging Serum
+        price:
+          amount: 12132
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/2/products/2/image_url.jpg
+        details:
+          description: >-
+            nti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
+            Serumnti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
+            Serumnti-Aging Serum
+      - product_name: Rice serum
+        price:
+          amount: 1
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/2/products/3/image_url.jpg
+        details:
+          description: |
+            Rice serum
+            Rice serum
+            Rice serumRice serumRice serumRice serum
+            Rice serum
+            Rice serumRice serumRice serum
+  - sub_category_name: Lotions & Creams
+    products:
+      - product_name: Face and body Lotion
+        price:
+          amount: 125
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/3/products/0/image_url.jpg
+        details:
+          description: |-
+            Face and body LotionFace and body LotionFace and body Lotion
+            Face and body LotionFace and body LotionFace and body Lotion
+      - product_name: Acne cream
+        price:
+          amount: 350
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/3/products/1/image_url.jpg
+        details:
+          description: |-
+            Acne creamAcne creamAcne creamddv
+            vfdsdvAcne creamAcne creamAcne cream
+      - product_name: Cica Cream
+        price:
+          amount: 455
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/3/products/2/image_url.jpg
+        details:
+          description: >-
+            Cica CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
+            CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
+            CreamCica Cream
+      - product_name: Sunscreen
+        price:
+          amount: 125
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/3/products/3/image_url.jpg
+        details:
+          description: >-
+            vSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreen
+  - sub_category_name: Body products
+    products:
+      - product_name: Turmeric scrubs
+        price:
+          amount: 520
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpg
+        details:
+          description: Turmeric scrubsTurmeric scrubsTurmeric scrubs
+      - product_name: Body cleanse
+        price:
+          amount: 250
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpg
+        details:
+          description: >-
+            Body cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody
+            cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody cleanse
+      - product_name: 'Body jelly '
+        price:
+          amount: 2554
+          currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/4/products/2/image_url.jpg
+        details:
+          description: >-
+            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
+            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
+            Body jelly 
