@@ -5,7 +5,7 @@ description: >-
 sub_categories:
   - sub_category_name: ' Hair Growth & Strengthening'
     products:
-      - product_name: Hair Growth Oil (with rosemary, cloves & moringa)
+      - product_name: Hair Growth Oil
         price:
           amount: 5000
           currency: Rwf
