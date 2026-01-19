@@ -67,6 +67,91 @@ export default config({
         }),
       },
     }),
+
+    productCategories: collection({
+      label: 'Tante Beauty Product Categories',
+      slugField: 'category_name',
+      path: 'content/Product-categories/*',
+      schema: {
+        // LEVEL 1: Main Product Category
+        category_name: fields.slug({
+          name: { label: 'Main Category Name e.g. Skin Care' },
+        }),
+        description: fields.text({
+          label: 'Category Tagline/Description e.g. "Our skin care products are designed to nourish and protect your skin."',
+          multiline: true,
+        }),
+    
+        // LEVEL 2: Sub-categories
+        sub_categories: fields.array(
+          fields.object(
+            {
+              sub_category_name: fields.text({
+                label: 'Sub-Category Name (e.g. Cleansers & Soaps)',
+              }),
+    
+              // LEVEL 3: Individual Products
+                products: fields.array(
+                  fields.object(
+                    {
+                      product_name: fields.text({
+                        label: 'Product Name',
+                      }),
+                      price: fields.object(
+                        {
+                          amount: fields.integer({
+                            label: 'Price Amount',
+                          }),
+                          currency: fields.text({
+                            label: 'Currency',
+                            defaultValue: 'Rwf',
+                          }),
+                        },
+                        {
+                          label: 'Price',
+                        }
+                      ),
+                      image_url: fields.image({
+                        label: 'Product Image',
+                        directory: 'public/uploads/products',
+                        publicPath: '/uploads/products',
+                      }),
+                      details: fields.object(
+                        {
+                          description: fields.text({
+                            label: 'Product Detail Description',
+                            multiline: true,
+                          }),
+                        },
+                        {
+                          label: 'Details',
+                        }
+                      ),
+                    },
+                    {
+                      label: 'Product',
+                    }
+                  ),
+                  {
+                    label: 'Products',
+                    itemLabel: (props) =>
+                      `Product: ${props.fields.product_name.value || 'Unnamed'}`,
+                  }
+                ),
+            },
+            {
+              label: 'Sub-category',
+            }
+          ),
+          {
+            label: 'Level 2: Sub-Categories',
+            itemLabel: (props) =>
+              `Sub-Cat: ${props.fields.sub_category_name.value || 'Unnamed'}`,
+          }
+        ),
+      },
+    }),
+
     services: collection({
       label: 'Services',
       slugField: 'title',
@@ -112,6 +197,8 @@ export default config({
         }),
       },
     }),
+
+    
     reviews: collection({
       label: 'Reviews',
       slugField: 'customerName',
