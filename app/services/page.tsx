@@ -16,7 +16,7 @@ export default async function ServicesPage() {
 
     const services = servicelist.filter((service): service is NonNullable<typeof service> => service !== null);
 
-   
+   console.log(services);
 
     // Load contact information for WhatsApp and phone links
     const contact = await reader.singletons.contact.read();
