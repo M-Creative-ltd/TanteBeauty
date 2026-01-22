@@ -83,7 +83,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale} className={`${serifFont.variable} ${sansSerifFont.variable} ${cormorantGaramondFont.variable}`}>
-      <body className={sansSerifFont.className}>
+      <body className={serifFont.className}>
         <PageLayout footer={<Footer />}>
           {children}
         </PageLayout>

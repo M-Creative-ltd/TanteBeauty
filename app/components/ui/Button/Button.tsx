@@ -31,7 +31,7 @@ export default function Button({
   return (
     <Link 
       href={href}
-      className={`${sizeClasses[size]} ${variantClasses[variant]} ${className || ''}`}
+      className={`${sizeClasses[size]} ${variantClasses[variant]} font-sans ${className || ''}`}
       style={variant === 'primary' ? { backgroundColor: primaryColor } : {}}
     >
       {label}

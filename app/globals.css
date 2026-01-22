@@ -54,7 +54,7 @@
   }
 
   body {
-    font-family: var(--font-sans), sans-serif;
+    font-family: var(--font-serif), serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -77,6 +77,11 @@
 }
 
 @layer utilities {
+  /* Sans-serif font utility */
+  .font-sans {
+    font-family: var(--font-sans), sans-serif;
+  }
+
   /* Cormorant Garamond font utility */
   .font-cormorant {
     font-family: var(--font-cormorant), serif;

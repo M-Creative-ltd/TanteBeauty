@@ -43,16 +43,16 @@ export default function Navigation({ inHero = false }: NavigationProps) {
         style={!inHero ? { color: '#014b3c' } : {}}
       >
         <li>
-          <Link href="/" onClick={closeMenu} className="hover:underline font-medium">Home</Link>
+          <Link href="/" onClick={closeMenu} className="hover:underline font-medium font-sans">Home</Link>
         </li>
         <li>
-          <Link href="/products" onClick={closeMenu} className="hover:underline font-medium">Products</Link>
+          <Link href="/products" onClick={closeMenu} className="hover:underline font-medium font-sans">Products</Link>
         </li>
         <li>
-          <Link href="/reviews" onClick={closeMenu} className="hover:underline font-medium">Reviews</Link>
+          <Link href="/reviews" onClick={closeMenu} className="hover:underline font-medium font-sans">Reviews</Link>
         </li>
         <li>
-          <Link href="/contact" onClick={closeMenu} className="hover:underline font-medium">Contact</Link>
+          <Link href="/contact" onClick={closeMenu} className="hover:underline font-medium font-sans">Contact</Link>
         </li>
       </ul>
     </nav>

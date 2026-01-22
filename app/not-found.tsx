@@ -60,7 +60,7 @@ export default async function NotFound() {
           />
           <Link
             href="/products"
-            className="px-6 py-3 text-base font-semibold uppercase rounded-lg border-2 transition-colors hover:opacity-90 w-full sm:w-auto text-center"
+            className="px-6 py-3 text-base font-semibold uppercase rounded-lg border-2 transition-colors hover:opacity-90 w-full sm:w-auto text-center font-sans"
             style={{
               borderColor: primaryColor,
               color: primaryColor,

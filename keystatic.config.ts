@@ -127,6 +127,11 @@ export default config({
                           label: 'Details',
                         }
                       ),
+                      stock_status: fields.checkbox({
+                        label: 'In Stock',
+                        description: 'Check if product is currently available in stock',
+                        defaultValue: true,
+                      }),
                     },
                     {
                       label: 'Product',
@@ -164,24 +169,20 @@ export default config({
             description: 'Used for URL slug (e.g., "Hair Growth Steps")',
           },
         }),
+  
         categoryLabel: fields.text({
           label: 'Category Label',
           description: 'e.g., "SKINCARE", "WELLNESS"',
           validation: { isRequired: false },
         }),
-        description: fields.markdoc({
-          label: 'Service Description',
-          options: {
-            bold: true,
-            italic: true,
-            link: true,
-            heading: true,
-            blockquote: true,
-            orderedList: true,
-            unorderedList: true,
-          },
-          description: 'Detailed service description with benefits and uses (e.g., "EXCELLENT PAIN RELIEVER", "ALLEVIATES MUSCULAR, JOINTS AND NERVES PAINS...")',
+
+        description: fields.text({
+          label: 'Product Detail Description',
+          multiline: true,
+          description: 'Multi lineService description',
+          validation: { isRequired: true },
         }),
+
         image: fields.image({
           label: 'Service Image',
           directory: 'public/uploads/services',
@@ -189,6 +190,7 @@ export default config({
           description: 'Image for service display',
           validation: { isRequired: false },
         }),
+        
         displayOrder: fields.integer({
           label: 'Display Order',
           description: 'Order for displaying services (lower numbers appear first)',
