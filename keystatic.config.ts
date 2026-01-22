@@ -161,7 +161,6 @@ export default config({
       label: 'Services',
       slugField: 'title',
       path: 'services/*',
-      format: { contentField: 'description' },
       schema: {
         title: fields.slug({
           name: {
@@ -177,7 +176,7 @@ export default config({
         }),
 
         description: fields.text({
-          label: 'Product Detail Description',
+          label: 'Service Detail Description',
           multiline: true,
           description: 'Multi lineService description',
           validation: { isRequired: true },
@@ -188,7 +187,7 @@ export default config({
           directory: 'public/uploads/services',
           publicPath: '/uploads/services',
           description: 'Image for service display',
-          validation: { isRequired: false },
+          validation: { isRequired: true },
         }),
         
         displayOrder: fields.integer({

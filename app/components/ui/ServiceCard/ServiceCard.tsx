@@ -38,7 +38,7 @@ const ServiceCard = ({ service }: { service: ServiceData }) => {
           {/* Image Rectangle */}
           <div className="relative w-[184px] h-[184px] shrink-0">
             <Image 
-              src={service.image} 
+              src={service.image || '/uploads/services/customized-skincare-routines-copy/image.png'} 
               alt={service.title} 
               fill 
               className="object-cover"

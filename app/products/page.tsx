@@ -49,7 +49,7 @@ export default async function ProductsPage() {
       }
       const product = { ...productObject, slug: slug };
       return product;
-      console.log(`full product: ${product}`);//this is the product debug line and will be removed later
+    
     })
   );
 
@@ -67,10 +67,6 @@ export default async function ProductsPage() {
     })
   );
 
-  // Filter and sort services
-  const services = allServices
-    .filter((service): service is NonNullable<typeof service> => service !== null)
-    .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
 
   // Fetch home singleton for theme colors
   const home = await reader.singletons.home.read();
@@ -87,20 +83,7 @@ export default async function ProductsPage() {
   // Transform services for component
   // Note: services use format: { contentField: 'description' }, so description is accessed via service.description()
   // We need to resolve the markdoc content here in the server component
-  const transformedServices = await Promise.all(
-    services.map(async (service) => {
-      const descriptionContent = await service.description();
-      // The content() method returns { node } structure, extract the node
-      const descriptionNode = descriptionContent?.node || descriptionContent;
-      
-      return {
-        title: service.title,
-        categoryLabel: service.categoryLabel || undefined,
-        description: <MarkdownContent content={descriptionNode} />, // Render MarkdownContent on server
-        image: service.image || undefined,
-      };
-    })
-  );
+  
 
   return (
     <>
@@ -113,13 +96,7 @@ export default async function ProductsPage() {
           primaryColor={primaryColor}
         />
       )}
-      {serviceSettings && (
-        <ServicesSection
-          heading={serviceSettings.heading}
-          services={transformedServices}
-          primaryColor={primaryColor}
-        />
-      )}
+      
     </>
   );
 }
