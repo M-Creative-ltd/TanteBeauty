@@ -8,14 +8,14 @@ hero:
   mobileImage: /uploads/home/hero/hero/mobileImage.png
   logo: /uploads/home/hero/hero/logo.png
 intro:
-  image: /uploads/home/intro/intro/image.png
+  image: /uploads/home/intro/intro/image.jpeg
   logo: /uploads/home/intro/intro/logo.png
   ctaLabel: Explore our Products
   ctaTarget: /products
 why:
   heading: Who is Tante and Why Tante?
   image: /uploads/home/why/why/image.jpg
-  highlightImage: /uploads/home/why/why/highlightImage.png
+  highlightImage: /uploads/home/why/why/highlightImage.jpeg
   highlightCaption: Image showing a black bottle that contains a syrum for skin care
 philosophy:
   heading: Why do we do what  we do?
