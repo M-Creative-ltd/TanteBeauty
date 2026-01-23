@@ -11,38 +11,45 @@ export interface ProductCategory extends NonNullable<ProductCategoryEntry> {
     slug: string;
 }
 
+
+
 interface ProductPageClientProps {
     categories: ProductCategory[];
     phoneNumber: string;
     whatsappBaseUrl: string;
 }
 
-interface SelectedProduct {
-    productName: string;
-    productImage: string;
-    productDescription: string;
-    productPrice: number;
-    productCurrency: string;
+interface Review {
+    readonly fullName: string;
+    readonly role: string;
+    readonly rating: number;
+    readonly avatar: string | null;
+    readonly testimony: string;
 }
+
+interface SelectedProduct {
+    readonly product_name: string;
+    readonly image_url: string | null; 
+    readonly stock_status: boolean;
+    readonly price: {
+        readonly amount: number | null; 
+        readonly currency: string; 
+    };
+    readonly details: {
+     readonly description: string;
+    };
+
+    readonly reviews: readonly Review[] | null;
+}
+  
 
 export default function ProductPageClient({ categories, phoneNumber, whatsappBaseUrl }: ProductPageClientProps) {
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<SelectedProduct | null>(null);
 
-    const handleProductClick = (product: {
-        product_name: string;
-        image_url: string | null;
-        details: { description: string };
-        price: { amount: number | null; currency: string };
-        stock_status?: boolean;
-    }) => {
-        setSelectedProduct({
-            productName: product.product_name,
-            productImage: product.image_url || '',
-            productDescription: product.details.description,
-            productPrice: product.price.amount || 0,
-            productCurrency: product.price.currency,
-        });
+    const handleProductClick = (product:SelectedProduct) => {
+        setSelectedProduct(product);
+                 
         setIsOverlayOpen(true);
     };
 
@@ -110,7 +117,7 @@ export default function ProductPageClient({ categories, phoneNumber, whatsappBas
                     onClose={handleCloseOverlay}
                     product={selectedProduct}
                     phoneNumber={phoneNumber}
-                    whatsappUrl={getWhatsAppUrl(selectedProduct.productName)}
+                    whatsappUrl={getWhatsAppUrl(selectedProduct.product_name)}
                 />
             )}
         </>

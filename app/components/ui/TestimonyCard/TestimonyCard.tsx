@@ -2,16 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 
 interface TestimonialProps {
-  name: string;
+  fullName: string;
   role: string;
   testimony: string;
   rating: number; 
-  imageUrl: string;
+  avatar: string | null;
 }
 
-const TestimonialCard = ({ name, role, testimony, rating, imageUrl }: TestimonialProps) => {
+const TestimonialCard = ({ fullName, role, testimony, rating, avatar}: TestimonialProps) => {
+  console.log(fullName);
   return (
-    <div className="flex flex-col justify-center items-start p-4 gap-4 w-[303px] h-[163px] bg-(--color-primary) rounded-[16px] relative shadow-sm">
+    <div className="flex flex-col justify-center items-start p-4 gap-4 w-full h-[180px] bg-(--color-primary) rounded-[16px] relative shadow-sm">
       
       {/* Star Rating Section */}
       <div className="flex flex-row items-center gap-4 w-full h-[20px]">
@@ -39,8 +40,8 @@ const TestimonialCard = ({ name, role, testimony, rating, imageUrl }: Testimonia
         {/* Avatar */}
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden bg-(--color-secondary) flex-shrink-0">
           <Image 
-            src={imageUrl} 
-            alt={name}
+            src={avatar? avatar: ''} 
+            alt={fullName}
             width={50}
             height={50}
             className="object-cover"
@@ -50,7 +51,7 @@ const TestimonialCard = ({ name, role, testimony, rating, imageUrl }: Testimonia
         {/* Name and Title */}
         <div className="flex flex-col items-start p-2 gap-2 flex-grow overflow-hidden">
           <h4 className="text-(--color-accent) font-sans font-bold text-[13px] leading-[16px] uppercase truncate w-full">
-            {name}
+            {fullName}
           </h4>
           <span className="text-(--color-accent) font-sans font-medium text-[11px] opacity-80 leading-[13px] truncate w-full">
             {role}

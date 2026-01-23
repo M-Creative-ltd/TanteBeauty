@@ -1,19 +1,36 @@
 'use client';
 
 import { useEffect } from 'react';
-import { FaWhatsapp, FaPhone } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaRegStar } from 'react-icons/fa';
 import Image from '../Image/Image';
+import TestimonialCard from '../TestimonyCard/TestimonyCard';
+
+interface Review {
+  readonly fullName: string;
+  readonly role: string;
+  readonly rating: number;
+  readonly avatar: string | null;
+  readonly testimony: string;
+}
+
+interface Product {
+  readonly product_name: string;
+  readonly image_url: string | null;
+  readonly stock_status: boolean;
+  readonly price: {
+    readonly amount: number | null;
+    readonly currency: string;
+  };
+  readonly details: {
+    readonly description: string;
+  };
+  readonly reviews: readonly Review[] | null;
+}
 
 interface ProductOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  product: {
-    productName: string;
-    productImage: string;
-    productDescription: string;
-    productPrice: number;
-    productCurrency: string;
-  };
+  product: Product;
   phoneNumber: string;
   whatsappUrl: string;
 }
@@ -58,201 +75,100 @@ export default function ProductOverlay({
 
   return (
     <div
-      className="fixed  inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm overflow-y-auto px-4 py-8 md:py-16"
       onClick={handleBackdropClick}
     >
-      {/* Desktop Layout */}
-      <div className="hidden sm:flex relative w-full max-w-[1071px] h-[500px] bg-white px-16 py-8">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute right-[16px] top-[32px] w-[30px] h-[30px] rounded-full border-2 border-primary flex items-center justify-center z-10 hover:bg-primary/10 transition-colors"
-          aria-label="Close overlay"
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            className="absolute"
+      {/* Centering Wrapper: Uses min-h-full to allow natural scrolling if content is tall */}
+      <div className="flex flex-col items-center justify-start min-h-full w-full gap-8 pointer-events-none">
+        
+        {/* Main Product Card */}
+        <div className="pointer-events-auto relative w-full max-w-[1071px] bg-white shadow-2xl overflow-hidden flex-shrink-0">
+          
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute right-4 top-4 md:right-8 md:top-8 w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center z-20 hover:bg-primary/10 transition-colors bg-white"
+            aria-label="Close overlay"
           >
-            <line
-              x1="4"
-              y1="4"
-              x2="24"
-              y2="24"
-              stroke="#014B3C"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <line
-              x1="24"
-              y1="4"
-              x2="4"
-              y2="24"
-              stroke="#014B3C"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+            <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+              <line x1="4" y1="4" x2="24" y2="24" stroke="#014B3C" strokeWidth="3" strokeLinecap="round" />
+              <line x1="24" y1="4" x2="4" y2="24" stroke="#014B3C" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          </button>
 
-        {/* Content Container - Flex Layout */}
-        <div className="flex flex-row gap-6 w-full h-full">
-          {/* Left Section - Text Content */}
-          <div className="w-1/2 flex flex-col items-center justify-center py-[8px] gap-[56px]">
-            {/* Service text card */}
-            <div className="flex flex-col items-center px-10 pb-10 gap-10 w-full">
-              {/* Product Name */}
-              <h2 className="w-full text-center font-sans font-semibold text-2xl leading-[29px] text-primary">
-                {product.productName}
-              </h2>
+          {/* Desktop Layout (SM and Up) */}
+          <div className="hidden sm:flex flex-row min-h-[500px]">
+            {/* Left: Text Content */}
+            <div className="w-1/2 flex flex-col justify-between p-10 md:p-16">
+              <div className="flex flex-col gap-6">
+                <h2 className="font-sans font-semibold text-3xl text-primary">
+                  {product.product_name}
+                </h2>
+                <p className="font-sans font-normal text-base leading-relaxed text-gray-700">
+                  {product.details.description}
+                </p>
+              </div>
 
-              {/* Product Description */}
-              <p className="w-full font-sans font-normal text-base leading-[19px] text-black">
-                {product.productDescription}
-              </p>
+              <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-100">
+                <a href={whatsappUrl} className="flex items-center justify-center gap-2 py-2 border border-primary text-primary rounded-md">
+                  <FaWhatsapp /> <span className="text-xs font-bold">WhatsApp</span>
+                </a>
+                <a href={`tel:${phoneNumber}`} className="flex items-center justify-center gap-2 py-2 bg-primary text-white rounded-md">
+                  <FaPhone className="scale-x-[-1]" /> <span className="text-xs font-bold">Call Now</span>
+                </a>
+              </div>
             </div>
 
-            {/* Frame 8 - CTAs */}
-            <div className="flex flex-row justify-between items-center px-10 py-5 gap-4 w-full">
-              {/* WhatsApp CTA - Left */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 flex-1 hover:opacity-80 transition-opacity"
-              >
-                <span className="font-sans font-semibold text-sm leading-[17px] text-primary whitespace-nowrap">
-                  Get In Touch
-                </span>
-                <FaWhatsapp className="w-[22px] h-[22px] flex-shrink-0" style={{ color: '#014B3C' }} />
-              </a>
-
-              {/* Phone CTA - Right */}
-              <a
-                href={`tel:${phoneNumber}`}
-                className="flex flex-row items-center gap-2 flex-1 justify-end hover:opacity-80 transition-opacity"
-              >
-                <span className="font-sans font-semibold text-sm leading-[17px] text-primary whitespace-nowrap">
-                  call us directly
-                </span>
-                <FaPhone className="w-[22px] h-[22px] flex-shrink-0 transform scale-x-[-1]" style={{ color: '#014B3C' }} />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Section - Product Image */}
-          <div className="w-1/2 flex items-center justify-center">
-            <div className="relative w-full h-full max-h-[500px]">
+            {/* Right: Image */}
+            <div className="w-1/2 relative bg-gray-50">
               <Image
-                src={product.productImage}
-                alt={product.productName}
+                src={product.image_url || ''}
+                alt={product.product_name}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1071px) 50vw, 500px"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Layout */}
-      <div className="block sm:hidden relative w-full max-w-[440px] h-[80vh] bg-white p-5 overflow-y-auto">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute right-[5px] top-[20px] w-[40px] h-[40px] rounded-full border-2 border-primary flex items-center justify-center z-10 hover:bg-primary/10 transition-colors"
-          aria-label="Close overlay"
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            className="absolute"
-          >
-            <line
-              x1="7"
-              y1="7"
-              x2="21"
-              y2="21"
-              stroke="#014B3C"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <line
-              x1="21"
-              y1="7"
-              x2="7"
-              y2="21"
-              stroke="#014B3C"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-
-        {/* Content Container */}
-        <div className="flex flex-col items-center w-full h-full">
-          {/* Product Image - ~40% */}
-          <div className="flex items-center justify-center w-full h-[40%] min-h-[200px] flex-shrink-0">
-            <div className="relative w-full h-full max-w-[320px]">
-              <Image
-                src={product.productImage}
-                alt={product.productName}
-                fill
-                className="object-cover"
-                sizes="320px"
+                sizes="50vw"
               />
             </div>
           </div>
 
-          {/* Text Content - ~40% */}
-          <div className="flex flex-col items-center justify-center w-full h-[40%] px-4 flex-shrink-0 overflow-y-auto">
-            {/* Service text card */}
-            <div className="flex flex-col items-center gap-4 w-full">
-              {/* Product Name */}
-              <h2 className="w-full text-center font-sans font-semibold text-2xl leading-[29px] text-primary">
-                {product.productName}
-              </h2>
-
-              {/* Product Description */}
-              <p className="w-full font-sans font-normal text-base leading-[19px] text-black">
-                {product.productDescription}
-              </p>
+          {/* Mobile Layout (Only XS) */}
+          <div className="flex sm:hidden flex-col w-full">
+            <div className="relative w-full aspect-square">
+              <Image
+                src={product.image_url || ''}
+                alt={product.product_name}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+            <div className="p-6 flex flex-col gap-4 text-center">
+              <h2 className="font-semibold text-2xl text-primary">{product.product_name}</h2>
+              <p className="text-sm text-gray-600 line-clamp-4">{product.details.description}</p>
+              
+              <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-100">
+                <a href={whatsappUrl} className="flex items-center justify-center gap-2 py-2 border border-primary text-primary rounded-md">
+                  <FaWhatsapp /> <span className="text-xs font-bold">WhatsApp</span>
+                </a>
+                <a href={`tel:${phoneNumber}`} className="flex items-center justify-center gap-2 py-2 bg-primary text-white rounded-md">
+                  <FaPhone className="scale-x-[-1]" /> <span className="text-xs font-bold">Call Now</span>
+                </a>
+              </div>
             </div>
           </div>
-
-          {/* CTAs - ~20% */}
-          <div className="flex flex-row justify-between items-center w-full h-[20%] min-h-[60px] px-4 flex-shrink-0 gap-4">
-            {/* WhatsApp CTA - Left */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-row items-center gap-2 flex-1 hover:opacity-80 transition-opacity"
-            >
-              <span className="font-sans font-semibold text-xs leading-[15px] text-primary whitespace-nowrap">
-                Get In Touch
-              </span>
-              <FaWhatsapp className="w-[22px] h-[22px] flex-shrink-0" style={{ color: '#014B3C' }} />
-            </a>
-
-            {/* Phone CTA - Right */}
-            <a
-              href={`tel:${phoneNumber}`}
-              className="flex flex-row items-center gap-2 flex-1 justify-end hover:opacity-80 transition-opacity"
-            >
-              <span className="font-sans font-semibold text-xs leading-[15px] text-primary whitespace-nowrap">
-                call us directly
-              </span>
-              <FaPhone className="w-[22px] h-[22px] flex-shrink-0 transform scale-x-[-1]" style={{ color: '#014B3C' }} />
-            </a>
-          </div>
         </div>
+
+        {/* Reviews Section: Horizontal Wrap on MD+, Vertical on SM */}
+        {product.reviews && product.reviews.length > 0 && (
+          <div className="pointer-events-auto w-full max-w-[1071px] flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-6 pb-10">
+            {product.reviews.map((review, index) => (
+              <div key={index} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                <TestimonialCard {...review} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
-
