@@ -168,16 +168,23 @@ export default config({
                             ),
 
                             testimony:fields.text(
-                              {label:'Testimony',
-                               description:'write the customer testimony here',
+                              {
+                                label:'Testimony',
+                                description:'write the customer testimony here',
                               }
                             )
                           },
                           {
-                            label:'Reviews'
+                            label:'Reviews',
                           }
                         
-                        )
+                        ),
+
+                        {
+                          label: 'Reviews',
+                          itemLabel: (props) =>
+                            `Review: ${props.fields.fullName.value || 'unnamed'}`,
+                        }
                       )
                     },
                     {
