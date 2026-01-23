@@ -4,7 +4,7 @@ hero:
   heading: The Natural way
   ctaLabel: Explore our products
   ctaTarget: /products
-  image: /uploads/home/hero/hero/image.svg
+  image: /uploads/home/hero/hero/image.jpg
   mobileImage: /uploads/home/hero/hero/mobileImage.png
   logo: /uploads/home/hero/hero/logo.png
 intro:
@@ -14,7 +14,7 @@ intro:
   ctaTarget: /products
 why:
   heading: Who is Tante and Why Tante?
-  image: /uploads/home/why/why/image.png
+  image: /uploads/home/why/why/image.jpg
   highlightImage: /uploads/home/why/why/highlightImage.png
   highlightCaption: Image showing a black bottle that contains a syrum for skin care
 philosophy:
@@ -25,6 +25,7 @@ source:
   image: /uploads/home/source/source/image.jpeg
 promise:
   heading: Our promise to our clients
+  illustration: /uploads/home/promise/promise/illustration.jpg
 theme:
   primaryColor: '#014b3c'
   secondaryColor: '#fff7f5'
