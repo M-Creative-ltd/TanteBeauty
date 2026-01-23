@@ -40,7 +40,7 @@ export default function WhySection({
                 fill
                 quality={90}
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover rounded-lg"
+                className="object-cover"
               />
             </div>
           </div>

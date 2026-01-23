@@ -1,6 +1,7 @@
 import ServiceCard from "../components/ui/ServiceCard/ServiceCard";
 import TestimonialCard from "../components/ui/TestimonyCard/TestimonyCard"
 import { reader } from "../reader";
+import Image from 'next/image';
 
 export default async function ServicesPage() {
     const serviceSlugs = await reader.collections.services.list();
@@ -24,26 +25,66 @@ export default async function ServicesPage() {
     const phoneNumberFormatted = phoneNumber.replace(/[^0-9]/g, '');
     const whatsappBaseUrl = `https://wa.me/${phoneNumberFormatted}`;
 
-    //Remember to remove this section and replace it with testimonies from the product reviews. 
-    //Also add reviews on product schema tommorrow
-    
-    const david = {
-      name: "David MURENZI",
-      role: "CEO Imena Ltd & Repeating Client",
-      testimony: "Finally, a soap that clears my breakouts without stripping my skin—my confidence is officially back",
-      rating: 4,
-      imageUrl: "/public/uploads/seo/ogImage.png", // Ensure these paths exist in your public folder
-    };
+
+    //fetch service settings
+    const serviceSettings = await reader.singletons.serviceSettings.read();
+
 
   return (
-    <div>
-      <h1>Services</h1>
-      <TestimonialCard {...david} />
-      <div className="flex flex-col items-center justify-center sm:flex-row flex-wrap gap-[16px]">
-        {services.map((service) => (
-          <ServiceCard key={service.slug} service={{...service, whatsappBaseUrl, phoneNumber}} />
-        ))}
-      </div>
+    <div className="relative flex flex-col gap-[24px]">
+      
+      {/* Background Image */}
+      <div className="relative w-full h-[50vh]">
+          {serviceSettings?.introMobiImage ? (
+            <>
+              {/* Mobile hero image */}
+              <Image
+                src={serviceSettings.introMobiImage}
+                alt=""
+                fill
+                priority
+                quality={85}
+                sizes="100vw"
+                className="object-cover block md:hidden"
+                style={{ objectFit: 'cover' }}
+              />
+              {/* Desktop / tablet hero image */}
+              {serviceSettings?.introDeskImage && (
+                <>
+                <Image
+                  src={serviceSettings.introDeskImage}
+                  alt=""
+                  fill
+                  priority
+                  quality={85}
+                  sizes="100vw"
+                  className="object-cover hidden md:block"
+                  style={{ objectFit: 'cover' }}
+                />
+                </>
+              )
+              }
+            </>
+          ) : (
+            <Image
+              src={serviceSettings?.introDeskImage || ''}
+              alt=""
+              fill
+              priority
+              quality={85}
+              sizes="100vw"
+              className="object-cover border-2 border-blue-500"
+              style={{ objectFit: 'cover' }}
+            />
+          )}
+        </div>
+
+        <div className="w-full h-fit flex flex-col items-center justify-center sm:flex-row flex-wrap gap-[0px] md:gap-[16px] lg:gap-[32px]">
+          {services.map((service) => (
+            <ServiceCard key={service.slug} service={{...service, whatsappBaseUrl, phoneNumber}} />
+          ))}
+        </div>
     </div>
+   
   );
 }

@@ -46,10 +46,10 @@ export default function Navigation({ inHero = false }: NavigationProps) {
           <Link href="/" onClick={closeMenu} className="hover:underline font-medium font-sans">Home</Link>
         </li>
         <li>
-          <Link href="/products" onClick={closeMenu} className="hover:underline font-medium font-sans">Products</Link>
+          <Link href="/product" onClick={closeMenu} className="hover:underline font-medium font-sans">Products</Link>
         </li>
         <li>
-          <Link href="/reviews" onClick={closeMenu} className="hover:underline font-medium font-sans">Reviews</Link>
+          <Link href="/services" onClick={closeMenu} className="hover:underline font-medium font-sans">Services</Link>
         </li>
         <li>
           <Link href="/contact" onClick={closeMenu} className="hover:underline font-medium font-sans">Contact</Link>

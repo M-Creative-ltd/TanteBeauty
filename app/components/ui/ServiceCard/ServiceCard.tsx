@@ -20,14 +20,14 @@ const ServiceCard = ({ service }: { service: ServiceData }) => {
   const handleFlip = () => setIsFlipped(!isFlipped);
 
   return (
-    <div className="group perspective-1000 w-[200px] h-[438px] cursor-pointer">
+    <div className="group perspective-1000 w-full md:w-[300px] md:h-[416px] p-[8px] cursor-pointer">
       <div 
         className={`relative w-full h-fit transform-3d transition-transform duration-500 preserve-3d ${isFlipped ? 'rotate-y-180' : ''}`}
         onClick={isFlipped ? handleFlip : undefined}
       >
         
         {/* --- FRONT SIDE --- */}
-        <div className="relative backface-hidden flex flex-col items-center p-[8px] gap-[16px] w-full h-full bg-primary border-2 border-primary box-border">
+        <div className="relative  backface-hidden flex flex-col items-center p-[8px] gap-[16px] w-full h-full bg-primary border-2 border-primary box-border">
           {/* Title Frame */}
           <div className="flex flex-row justify-center items-center p-2 w-[184px] h-[48px] stretch-0">
             <h3 className="text-white text-center font-bold text-[15px] leading-4 w-[168px]">
