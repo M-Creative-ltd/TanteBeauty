@@ -596,6 +596,12 @@ export default config({
           label: 'Section Heading',
           description: 'Main heading for services section (e.g., "WE SERVE YOU THROUGH THESE SERVICES")',
         }),
+
+        subHeading: fields.text({
+          label:'Introduction to services',
+          description:'Single sentence giving introduction to tante beauty service. no more than two line sentence.'
+        }
+        )
       },
     }),
     seo: singleton({
