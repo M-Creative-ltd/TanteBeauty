@@ -16,7 +16,6 @@ export default async function ServicesPage() {
 
     const services = servicelist.filter((service): service is NonNullable<typeof service> => service !== null);
 
-   console.log(services);
 
     // Load contact information for WhatsApp and phone links
     const contact = await reader.singletons.contact.read();
@@ -27,9 +26,11 @@ export default async function ServicesPage() {
   return (
     <div>
       <h1>Services</h1>
-      {services.map((service) => (
-        <ServiceCard key={service.slug} service={{...service, whatsappBaseUrl, phoneNumber}} />
-      ))}
+      <div className="flex flex-col items-center justify-center sm:flex-row flex-wrap gap-[16px]">
+        {services.map((service) => (
+          <ServiceCard key={service.slug} service={{...service, whatsappBaseUrl, phoneNumber}} />
+        ))}
+      </div>
     </div>
   );
 }
