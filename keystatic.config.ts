@@ -601,9 +601,25 @@ export default config({
           label:'Introduction to services',
           description:'Single sentence giving introduction to tante beauty service. no more than two line sentence.'
         }
+        ),
+
+        introDeskImage:fields.image({
+          label: 'Service photo Photo Desktop Version',
+          directory: 'public/uploads/serviceSettings',
+          publicPath: '/uploads/serviceSettings',
+          description: 'Landscape image version of the service intro',
+        }),
+
+        introMobiImage:fields.image({
+          label: 'Contact Photo Mobile Version',
+          directory: 'public/uploads/serviceSettings',
+          publicPath: '/uploads/serviceSettings',
+          description: 'portrait image version of the Service intro',
+        }
         )
       },
     }),
+    
     seo: singleton({
       label: 'SEO & Metadata',
       path: 'content/seo/index',
