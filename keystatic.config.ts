@@ -172,6 +172,9 @@ export default config({
                                description:'write the customer testimony here',
                               }
                             )
+                          },
+                          {
+                            label:'Reviews'
                           }
                         
                         )
