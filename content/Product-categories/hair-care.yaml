@@ -18,6 +18,38 @@ sub_categories:
 
             Here’s a simple hair growth oil guide you can use at home or look
             for ingredients/products with these benefits:
+        stock_status: true
+        reviews:
+          - fullName: David MURENZI
+            role: CEO Imena ltd
+            rating: 4
+            avatar: >-
+              /uploads/products/reveiws/hair-care/sub_categories/0/products/0/reviews/0/avatar.png
+            testimony: >-
+              Finally, a soap that clears my breakouts without stripping my
+              skin—my confidence is officially back
+          - fullName: Jean Paul N.
+            role: Verified Buyer
+            rating: 5
+            avatar: >-
+              /uploads/products/reveiws/hair-care/sub_categories/0/products/0/reviews/1/avatar.png
+            testimony: >-
+              I was skeptical at first, but this is the first natural soap that
+              actually works on oily skin.
+          - fullName: Sarah KALISA
+            role: SkinCare Blogger
+            rating: 4
+            avatar: >-
+              /uploads/products/reveiws/hair-care/sub_categories/0/products/0/reviews/2/avatar.png
+            testimony: >-
+              The glow I've seen in just two weeks is incredible. It's gentle
+              yet so effective for my daily routine.
+          - fullName: Vincent Ngenzi
+            role: Ceo TAnte brand
+            rating: 2
+            avatar: >-
+              /uploads/products/reveiws/hair-care/sub_categories/0/products/0/reviews/3/avatar.png
+            testimony: very deligent 2
       - product_name: Beard Growth Oil
         price:
           amount: 10000
@@ -29,6 +61,8 @@ sub_categories:
             OilBeard Growth Oil
 
             Beard Growth OilBeard Growth OilBeard Growth Oil
+        stock_status: true
+        reviews: []
   - sub_category_name: Moisture & Styling
     products:
       - product_name: Leave-In Conditioner
@@ -43,3 +77,5 @@ sub_categories:
 
             Leave-In ConditionerLeave-In ConditionerLeave-In ConditionerLeave-In
             Conditioner
+        stock_status: true
+        reviews: []
