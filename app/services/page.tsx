@@ -1,5 +1,5 @@
 import ServiceCard from "../components/ui/ServiceCard/ServiceCard";
-import TestimonialCard from "../components/ui/TestimonyCard/page";
+import TestimonialCard from "../components/ui/TestimonyCard/TestimonyCard"
 import { reader } from "../reader";
 
 export default async function ServicesPage() {

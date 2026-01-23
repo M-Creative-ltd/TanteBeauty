@@ -132,6 +132,50 @@ export default config({
                         description: 'Check if product is currently available in stock',
                         defaultValue: true,
                       }),
+
+                      reviews: fields.array(
+                        fields.object(
+                          {
+                            fullName:fields.text(
+                              {
+                                label:'Full Names',
+                                multiline:false,
+                              }
+                            ),
+                          
+                            role:fields.text({
+                              label:'Role',
+                              description: 'reviewer role or title. eg: CEO Imena ltd',
+                            }),                       
+                          
+                            rating:fields.integer(
+                              {
+                                label:'Rating',
+                                validation:{
+                                  isRequired:true,
+                                  min:1,
+                                  max: 5
+                                }
+                              }
+                            ),
+
+                            avatar:fields.image(
+                              {
+                                label:'reveiwe profile image',
+                                directory: 'public/uploads/products/reveiws',
+                                publicPath: '/uploads/products/reveiws',
+                              }
+                            ),
+
+                            testimony:fields.text(
+                              {label:'Testimony',
+                               description:'write the customer testimony here',
+                              }
+                            )
+                          }
+                        
+                        )
+                      )
                     },
                     {
                       label: 'Product',
