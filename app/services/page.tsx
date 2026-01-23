@@ -1,4 +1,5 @@
 import ServiceCard from "../components/ui/ServiceCard/ServiceCard";
+import TestimonialCard from "../components/ui/TestimonyCard/page";
 import { reader } from "../reader";
 
 export default async function ServicesPage() {
@@ -23,9 +24,21 @@ export default async function ServicesPage() {
     const phoneNumberFormatted = phoneNumber.replace(/[^0-9]/g, '');
     const whatsappBaseUrl = `https://wa.me/${phoneNumberFormatted}`;
 
+    //Remember to remove this section and replace it with testimonies from the product reviews. 
+    //Also add reviews on product schema tommorrow
+    
+    const david = {
+      name: "David MURENZI",
+      role: "CEO Imena Ltd & Repeating Client",
+      testimony: "Finally, a soap that clears my breakouts without stripping my skin—my confidence is officially back",
+      rating: 4,
+      imageUrl: "/public/uploads/seo/ogImage.png", // Ensure these paths exist in your public folder
+    };
+
   return (
     <div>
       <h1>Services</h1>
+      <TestimonialCard {...david} />
       <div className="flex flex-col items-center justify-center sm:flex-row flex-wrap gap-[16px]">
         {services.map((service) => (
           <ServiceCard key={service.slug} service={{...service, whatsappBaseUrl, phoneNumber}} />
