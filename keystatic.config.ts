@@ -132,7 +132,7 @@ export default config({
                         description: 'Check if product is currently available in stock',
                         defaultValue: true,
                       }),
-
+                      //Level 4: Product reviews
                       reviews: fields.array(
                         fields.object(
                           {
