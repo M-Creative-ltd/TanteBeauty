@@ -91,20 +91,23 @@ sub_categories:
     products:
       - product_name: Face and body Lotion
         price:
-          amount: 125
+          amount: 25000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/0/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/0/image_url.jpeg
         details:
-          description: |-
-            Face and body LotionFace and body LotionFace and body Lotion
-            Face and body LotionFace and body LotionFace and body Lotion
+          description: >-
+            A rich, fast-absorbing lotion that hydrates, softens, and brightens
+            both face and body. Infused with oats milk, collagen, and allantoin,
+            this multi-benefit formula restores moisture, strengthens the skin
+            barrier, and enhances natural radiance for a healthy, even-toned
+            glow.
         stock_status: true
         reviews: []
       - product_name: Acne cream
         price:
-          amount: 350
+          amount: 25000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/1/image_url.jpeg
         details:
           description: |-
             Acne creamAcne creamAcne creamddv
@@ -113,24 +116,29 @@ sub_categories:
         reviews: []
       - product_name: Cica Cream
         price:
-          amount: 455
+          amount: 30000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/3/products/2/image_url.jpg
         details:
           description: >-
-            Cica CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
-            CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
-            CreamCica Cream
+            A deeply soothing and restorative cream that helps repair damaged
+            skin barriers, calm redness, and replenish hydration. Enriched with
+            Centella Asiatica and natural botanicals, this cream supports
+            healing while leaving skin smooth, strong, and balanced.
         stock_status: true
         reviews: []
       - product_name: Sunscreen
         price:
-          amount: 125
+          amount: 15000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/3/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/3/image_url.jpeg
         details:
           description: >-
-            vSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreen
+            An ultra-light, fast-absorbing sunscreen that provides
+            broad-spectrum SPF 50 protection against UVA and UVB rays.
+            Formulated with advanced UV filters and soothing botanicals, it
+            defends skin from sun damage, dark spots, and premature aging while
+            maintaining a smooth, hydrated finish.
         stock_status: true
         reviews: []
   - sub_category_name: Body products
