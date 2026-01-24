@@ -87,20 +87,6 @@ sub_categories:
             the skin’s natural glow.
         stock_status: true
         reviews: []
-      - product_name: Rice serum
-        price:
-          amount: 1
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/3/image_url.jpg
-        details:
-          description: |
-            Rice serum
-            Rice serum
-            Rice serumRice serumRice serumRice serum
-            Rice serum
-            Rice serumRice serumRice serum
-        stock_status: true
-        reviews: []
   - sub_category_name: Lotions and Creams
     products:
       - product_name: Face and body Lotion
