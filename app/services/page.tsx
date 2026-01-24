@@ -1,5 +1,4 @@
 import ServiceCard from "../components/ui/ServiceCard/ServiceCard";
-import TestimonialCard from "../components/ui/TestimonyCard/TestimonyCard"
 import { reader } from "../reader";
 import Image from 'next/image';
 
@@ -77,6 +76,11 @@ export default async function ServicesPage() {
               style={{ objectFit: 'cover' }}
             />
           )}
+        </div>
+
+        <div className="flex flex-col item-center justify-center w-full">
+          <h1 className="text-4xl font-bold text-center mb-4 text-primary font-serif">{serviceSettings?.heading}</h1>
+          <h3 className='px-[12px] justify-center md:text-center'>{serviceSettings?.subHeading}</h3>
         </div>
 
         <div className="w-full h-fit flex flex-col items-center justify-center sm:flex-row flex-wrap gap-[0px] md:gap-[16px] lg:gap-[32px]">
