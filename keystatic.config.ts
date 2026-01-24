@@ -10,6 +10,7 @@ export default config({
       kind: 'github',
       repo: 'M-Creative-ltd/TanteBeauty',
     },
+
   collections: {
     posts: collection({
       label: 'Posts',
@@ -21,53 +22,7 @@ export default config({
         content: fields.markdoc({ label: 'Content' }),
       },
     }),
-    products: collection({
-      label: 'Products',
-      slugField: 'name',
-      path: 'products/*',
-      format: { contentField: 'description' },
-      schema: {
-        name: fields.slug({
-          name: {
-            label: 'Product Name',
-            description: 'Used for URL slug (e.g., "STONER")',
-          },
-        }),
-        description: fields.markdoc({
-          label: 'Product Description',
-          options: {
-            bold: true,
-            italic: true,
-            link: true,
-            heading: true,
-            blockquote: true,
-            orderedList: true,
-            unorderedList: true,
-          },
-          description: 'Full product description (e.g., "a gentle blend of botanical oils...")',
-        }),
-        mainImage: fields.image({
-          label: 'Main Product Display Image',
-          directory: 'public/uploads/products',
-          publicPath: '/uploads/products',
-          description: 'Primary product image for main page display',
-        }),
-        productLabelImage: fields.image({
-          label: 'Product Label Image',
-          directory: 'public/uploads/products/labels',
-          publicPath: '/uploads/products/labels',
-          description: 'Image of product in the products page',
-          validation: { isRequired: true },
-        }),
-        displayOrder: fields.integer({
-          label: 'Display Order',
-          description: 'Order for displaying products (lower numbers appear first)',
-          validation: { isRequired: false },
-          defaultValue: 0,
-        }),
-      },
-    }),
-
+    
     productCategories: collection({
       label: 'Tante Beauty Product Categories',
       slugField: 'category_name',
@@ -253,73 +208,6 @@ export default config({
       },
     }),
 
-    
-    reviews: collection({
-      label: 'Reviews',
-      slugField: 'customerName',
-      path: 'reviews/*',
-      schema: {
-        customerName: fields.slug({
-          name: {
-            label: 'Customer Name',
-            description: 'Used for URL slug (e.g., "alexis-green-city")',
-          },
-        }),
-        testimonial: fields.text({
-          label: 'Testimonial Quote',
-          description: 'Customer review/testimonial text',
-          validation: { isRequired: true },
-        }),
-        name: fields.text({
-          label: 'Display Name',
-          description: 'Name to display with testimonial (e.g., "Alexis")',
-          validation: { isRequired: true },
-        }),
-        location: fields.text({
-          label: 'Location',
-          description: 'Customer location (e.g., "Green City", "Lush Land")',
-          validation: { isRequired: false },
-        }),
-        product: fields.relationship({
-          label: 'Product',
-          collection: 'products',
-          description: 'The product that helped this customer',
-          validation: { isRequired: false },
-        }),
-        beforeImage: fields.image({
-          label: 'Before Image',
-          directory: 'public/uploads/reviews/before',
-          publicPath: '/uploads/reviews/before',
-          description: 'Image showing condition before using the product',
-          validation: { isRequired: false },
-        }),
-        afterImage: fields.image({
-          label: 'After Image',
-          directory: 'public/uploads/reviews/after',
-          publicPath: '/uploads/reviews/after',
-          description: 'Image showing results after using the product',
-          validation: { isRequired: false },
-        }),
-        video: fields.file({
-          label: 'Video Testimonial',
-          directory: 'public/uploads/reviews/videos',
-          publicPath: '/uploads/reviews/videos',
-          description: 'Video file showing customer testimony or testimonial',
-          validation: { isRequired: false },
-        }),
-        featured: fields.checkbox({
-          label: 'Featured Review',
-          description: 'Show in featured testimonials section',
-          defaultValue: false,
-        }),
-        displayOrder: fields.integer({
-          label: 'Display Order',
-          description: 'Order for displaying reviews (lower numbers appear first)',
-          validation: { isRequired: false },
-          defaultValue: 0,
-        }),
-      },
-    }),
   },
 
   singletons: {
@@ -580,24 +468,7 @@ export default config({
         ),
       },
     }),
-    reviewsBottom: singleton({
-      label: 'Reviews Bottom Section',
-      path: 'content/reviews-bottom/index',
-      schema: {
-        brandStatement: fields.text({
-          label: 'Brand Statement',
-          description: 'Main brand message/quote (e.g., "A healthy and beautiful skin is nurtured by & only Natural Cosmetics")',
-          validation: { isRequired: true },
-        }),
-        logo: fields.image({
-          label: 'Brand statement background image',
-          directory: 'public/uploads/reviews-bottom',
-          publicPath: '/uploads/reviews-bottom',
-          description: 'Brand logo for reviews section bottom',
-          validation: { isRequired: false },
-        }),
-      },
-    }),
+    
     contact: singleton({
       label: 'Contact',
       path: 'content/contact/index',
@@ -622,6 +493,7 @@ export default config({
         }),
       },
     }),
+
     productSettings: singleton({
       label: 'Product Settings',
       path: 'content/product-settings/index',
@@ -642,6 +514,7 @@ export default config({
         }),
       },
     }),
+
     serviceSettings: singleton({
       label: 'Service Settings',
       path: 'content/service-settings/index',
