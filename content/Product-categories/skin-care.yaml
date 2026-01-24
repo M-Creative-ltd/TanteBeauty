@@ -3,70 +3,49 @@ description: >-
   Restoring, protecting, and brightening the skin using natural, science-backed
   ingredients.
 sub_categories:
-  - sub_category_name: Cleansers & Soaps
+  - sub_category_name: 'Soaps and Cleansers '
     products:
-      - product_name: Acne Bar Soap
+      - product_name: Acne bar soap
         price:
-          amount: 3001
+          amount: 10000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/0/products/0/image_url.jpg
         details:
           description: >-
-            Acne bar soaps have evolved significantly from the harsh, drying
-            bricks of the past. Today, they are popular for being eco-friendly,
-            cost-effective, and highly effective for both face and body acne
-            (like "bacne").
-      - product_name: Face and body soap
-        price:
-          amount: 2000
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/0/products/1/image_url.jpg
-        details:
-          description: >-
-            Face and body soapFace and body soapFace and body soapFace and body
-            soapFace and body soap
-
-            Face and body soapFace and body soapFace and body soap
-
-            Face and body soapFace and body soap
-  - sub_category_name: Toners & mists
+            A gentle yet effective soap formulated to combat acne and soothe
+            irritated skin. Enriched with natural plant powders, it helps reduce
+            blemishes, balance skin, and leave your skin feeling refreshed and
+            calm.
+        stock_status: true
+        reviews: []
+  - sub_category_name: 'Toners '
     products:
       - product_name: Glycolic Acid Toner
         price:
-          amount: 10000
+          amount: 15000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/1/products/0/image_url.jpg
         details:
           description: >-
-            Acne bar soaps have evolved significantly from the harsh, drying
-            bricks of the past. Today, they are popular for being eco-friendly,
-            cost-effective, and highly effective for both face and body acne
-            (like "bacne").
+            A gentle exfoliating toner formulated with glycolic acid to brighten
+            dull skin, fade dark spots, and smooth uneven texture. This toner
+            promotes cell renewal for a radiant, refreshed, and youthful glow
+            while maintaining hydration and balance.
+        stock_status: true
+        reviews: []
       - product_name: Salicylic Acid Toner
         price:
-          amount: 3200
+          amount: 15000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpeg
         details:
           description: >-
-            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid
-            TonerSalicylic Acid Toner
-
-            Salicylic Acid TonerSalicylic Acid Toner
-
-            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid Toner
-      - product_name: Hydrating Toner
-        price:
-          amount: 200
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/1/products/2/image_url.jpg
-        details:
-          description: |-
-            Hydrating TonerHydrating TonerHydrating TonerHydrating Toner
-            Hydrating TonerHydrating Toner
-            Hydrating Toner
-            Hydrating TonerHydrating TonerHydrating Toner
-            Hydrating Toner
+            A clarifying toner formulated with salicylic acid to gently
+            exfoliate, unclog pores, and reduce acne breakouts. This
+            lightweight, refreshing toner helps control excess oil, refine skin
+            texture, and leave the skin smooth and balanced without over-drying.
+        stock_status: true
+        reviews: []
   - sub_category_name: Serums & Treatments
     products:
       - product_name: Vitamin C Serum
@@ -79,6 +58,8 @@ sub_categories:
             Vitamin C SerumVitamin C SerumVitamin C SerumVitamin C Serum
             Vitamin C SerumVitamin C Serum
             v
+        stock_status: true
+        reviews: []
       - product_name: Niacinamide Serum
         price:
           amount: 503
@@ -88,6 +69,8 @@ sub_categories:
           description: |-
             Niacinamide SerumNiacinamide SerumNiacinamide Serum
             Niacinamide SerumNiacinamide SerumNiacinamide Serum
+        stock_status: true
+        reviews: []
       - product_name: Anti-Aging Serum
         price:
           amount: 12132
@@ -98,6 +81,8 @@ sub_categories:
             nti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
             Serumnti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
             Serumnti-Aging Serum
+        stock_status: true
+        reviews: []
       - product_name: Rice serum
         price:
           amount: 1
@@ -110,6 +95,8 @@ sub_categories:
             Rice serumRice serumRice serumRice serum
             Rice serum
             Rice serumRice serumRice serum
+        stock_status: true
+        reviews: []
   - sub_category_name: Lotions & Creams
     products:
       - product_name: Face and body Lotion
@@ -121,6 +108,8 @@ sub_categories:
           description: |-
             Face and body LotionFace and body LotionFace and body Lotion
             Face and body LotionFace and body LotionFace and body Lotion
+        stock_status: true
+        reviews: []
       - product_name: Acne cream
         price:
           amount: 350
@@ -130,6 +119,8 @@ sub_categories:
           description: |-
             Acne creamAcne creamAcne creamddv
             vfdsdvAcne creamAcne creamAcne cream
+        stock_status: true
+        reviews: []
       - product_name: Cica Cream
         price:
           amount: 455
@@ -140,6 +131,8 @@ sub_categories:
             Cica CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
             CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
             CreamCica Cream
+        stock_status: true
+        reviews: []
       - product_name: Sunscreen
         price:
           amount: 125
@@ -148,6 +141,8 @@ sub_categories:
         details:
           description: >-
             vSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreen
+        stock_status: true
+        reviews: []
   - sub_category_name: Body products
     products:
       - product_name: Turmeric scrubs
@@ -157,6 +152,8 @@ sub_categories:
         image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpg
         details:
           description: Turmeric scrubsTurmeric scrubsTurmeric scrubs
+        stock_status: true
+        reviews: []
       - product_name: Body cleanse
         price:
           amount: 250
@@ -166,6 +163,8 @@ sub_categories:
           description: >-
             Body cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody
             cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody cleanse
+        stock_status: true
+        reviews: []
       - product_name: 'Body jelly '
         price:
           amount: 2554
@@ -176,3 +175,5 @@ sub_categories:
             Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
             Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
             Body jelly 
+        stock_status: true
+        reviews: []
