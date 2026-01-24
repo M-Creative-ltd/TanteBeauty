@@ -46,7 +46,7 @@ sub_categories:
             texture, and leave the skin smooth and balanced without over-drying.
         stock_status: true
         reviews: []
-  - sub_category_name: Serums & Treatments
+  - sub_category_name: 'Serums '
     products:
       - product_name: Vitamin C Serum
         price:
@@ -97,7 +97,7 @@ sub_categories:
             Rice serumRice serumRice serum
         stock_status: true
         reviews: []
-  - sub_category_name: Lotions & Creams
+  - sub_category_name: Lotions and Creams
     products:
       - product_name: Face and body Lotion
         price:
@@ -145,31 +145,24 @@ sub_categories:
         reviews: []
   - sub_category_name: Body products
     products:
-      - product_name: Turmeric scrubs
+      - product_name: Turmeric scrub
         price:
-          amount: 520
+          amount: 8000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpg
-        details:
-          description: Turmeric scrubsTurmeric scrubsTurmeric scrubs
-        stock_status: true
-        reviews: []
-      - product_name: Body cleanse
-        price:
-          amount: 250
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpeg
         details:
           description: >-
-            Body cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody
-            cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody cleanse
+            A gentle yet effective exfoliating scrub made with natural turmeric
+            and sugar to brighten, smooth, and revitalize the skin. This scrub
+            removes dead cells, unclogs pores, and reveals a healthy, radiant
+            glow while keeping skin nourished and soft.
         stock_status: true
         reviews: []
       - product_name: 'Body jelly '
         price:
           amount: 2554
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/2/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpg
         details:
           description: >-
             Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
