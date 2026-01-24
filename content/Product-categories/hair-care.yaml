@@ -1,6 +1,18 @@
 category_name: Hair Care
-description: >-
-  A nourishing hair oil formulated to stimulate hair growth, strengthen strands,
-  and improve scalp health. Made with a blend of natural oils and botanicals, it
-  helps reduce breakage, prevent dryness, and promote thicker, healthier hair.
-sub_categories: []
+description: Stronger, thicker, healthier hair naturally
+sub_categories:
+  - sub_category_name: Hair oil
+    products:
+      - product_name: Hair growth oil
+        price:
+          amount: 10000
+          currency: Rwf
+        image_url: /uploads/products/hair-care/sub_categories/0/products/0/image_url.jpeg
+        details:
+          description: >-
+            A nourishing hair oil formulated to stimulate hair growth,
+            strengthen strands, and improve scalp health. Made with a blend of
+            natural oils and botanicals, it helps reduce breakage, prevent
+            dryness, and promote thicker, healthier hair.
+        stock_status: true
+        reviews: []
