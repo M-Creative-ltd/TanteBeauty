@@ -1,7 +1,7 @@
 title: home page
 productDetailLogo: /uploads/home/product-detail/productDetailLogo.png
 hero:
-  heading: The Natural way
+  heading: The Natural way!
   ctaLabel: Explore our products
   ctaTarget: /products
   image: /uploads/home/hero/hero/image.jpg
@@ -15,7 +15,7 @@ intro:
 why:
   heading: Who is Tante and Why Tante?
   image: /uploads/home/why/why/image.jpg
-  highlightImage: /uploads/home/why/why/highlightImage.jpeg
+  highlightImage: /uploads/home/why/why/highlightImage.jpg
   highlightCaption: Image showing a black bottle that contains a syrum for skin care
 philosophy:
   heading: Why do we do what  we do?
