@@ -50,37 +50,41 @@ sub_categories:
     products:
       - product_name: Vitamin C Serum
         price:
-          amount: 100
+          amount: 12000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpeg
         details:
-          description: |-
-            Vitamin C SerumVitamin C SerumVitamin C SerumVitamin C Serum
-            Vitamin C SerumVitamin C Serum
-            v
+          description: >-
+            A brightening serum packed with Vitamin C to even skin tone, fade
+            dark spots, and enhance radiance. This lightweight formula
+            nourishes, protects, and rejuvenates the skin, leaving it refreshed,
+            luminous, and healthy-looking.
         stock_status: true
         reviews: []
       - product_name: Niacinamide Serum
         price:
-          amount: 503
+          amount: 12000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/2/products/1/image_url.jpeg
         details:
-          description: |-
-            Niacinamide SerumNiacinamide SerumNiacinamide Serum
-            Niacinamide SerumNiacinamide SerumNiacinamide Serum
+          description: >-
+            A lightweight, fast-absorbing serum that helps reduce dark spots,
+            control excess oil, and improve skin texture. Designed to promote a
+            clear, even, and radiant complexion while strengthening the skin
+            barrier.
         stock_status: true
         reviews: []
       - product_name: Anti-Aging Serum
         price:
-          amount: 12132
+          amount: 15000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/2/products/2/image_url.jpg
         details:
           description: >-
-            nti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
-            Serumnti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
-            Serumnti-Aging Serum
+            Tante Beauty Anti-aging serum is crafted to renew and restore skin
+            vitality. This serum combines collagen, retinol, and natural
+            antioxidants to reduce fine lines, improve elasticity, and enhance
+            the skin’s natural glow.
         stock_status: true
         reviews: []
       - product_name: Rice serum
