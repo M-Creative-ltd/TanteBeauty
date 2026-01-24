@@ -37,11 +37,21 @@ sub_categories:
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/1/products/0/image_url.jpg
         details:
-          description: >-
+          description: >
             A gentle exfoliating toner formulated with glycolic acid to brighten
             dull skin, fade dark spots, and smooth uneven texture. This toner
             promotes cell renewal for a radiant, refreshed, and youthful glow
             while maintaining hydration and balance.
+
+
+            How to Use:
+
+            After cleansing, apply toner to a cotton pad and gently sweep over
+            the face and neck
+
+            Use 3–4 times a week at night, avoiding direct contact with eyes
+
+            Follow with moisturizer; apply sunscreen the next morning
         stock_status: true
         reviews: []
       - product_name: Salicylic Acid Toner
@@ -50,11 +60,21 @@ sub_categories:
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpeg
         details:
-          description: >-
+          description: >
             A clarifying toner formulated with salicylic acid to gently
             exfoliate, unclog pores, and reduce acne breakouts. This
             lightweight, refreshing toner helps control excess oil, refine skin
             texture, and leave the skin smooth and balanced without over-drying.
+
+
+            How to Use:
+
+            After cleansing, apply toner to a cotton pad and gently sweep over
+            the face, avoiding eyes and lips
+
+            Use once daily at night, then increase gradually if tolerated
+
+            Follow with moisturizer and sunscreen in the morning
         stock_status: true
         reviews: []
   - sub_category_name: 'Serums '
