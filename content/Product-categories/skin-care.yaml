@@ -158,13 +158,14 @@ sub_categories:
         reviews: []
       - product_name: 'Body jelly '
         price:
-          amount: 2554
+          amount: 6000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpeg
         details:
           description: >-
-            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
-            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
-            Body jelly 
+            A soothing and gentle body jelly specially formulated for children’s
+            delicate skin. Made with natural moisturizers and nourishing oils,
+            it helps protect, soften, and hydrate the skin while preventing
+            dryness and irritation.
         stock_status: true
         reviews: []
