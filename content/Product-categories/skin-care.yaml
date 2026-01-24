@@ -16,17 +16,6 @@ sub_categories:
             irritated skin. Enriched with natural plant powders, it helps reduce
             blemishes, balance skin, and leave your skin feeling refreshed and
             calm.
-
-
-            How to Use:
-
-            Wet skin and lather the soap between your hands or on a washcloth
-
-            Apply gently to affected areas of the face and body
-
-            Wash your face for 30–60 seconds before rinsing thoroughly
-
-            Use 1–2 times daily for best results
         stock_status: true
         reviews: []
   - sub_category_name: 'Toners '
@@ -42,16 +31,6 @@ sub_categories:
             dull skin, fade dark spots, and smooth uneven texture. This toner
             promotes cell renewal for a radiant, refreshed, and youthful glow
             while maintaining hydration and balance.
-
-
-            How to Use:
-
-            After cleansing, apply toner to a cotton pad and gently sweep over
-            the face and neck
-
-            Use 3–4 times a week at night, avoiding direct contact with eyes
-
-            Follow with moisturizer; apply sunscreen the next morning
         stock_status: true
         reviews: []
       - product_name: Salicylic Acid Toner
@@ -65,16 +44,6 @@ sub_categories:
             exfoliate, unclog pores, and reduce acne breakouts. This
             lightweight, refreshing toner helps control excess oil, refine skin
             texture, and leave the skin smooth and balanced without over-drying.
-
-
-            How to Use:
-
-            After cleansing, apply toner to a cotton pad and gently sweep over
-            the face, avoiding eyes and lips
-
-            Use once daily at night, then increase gradually if tolerated
-
-            Follow with moisturizer and sunscreen in the morning
         stock_status: true
         reviews: []
   - sub_category_name: 'Serums '
