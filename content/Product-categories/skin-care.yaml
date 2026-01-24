@@ -3,176 +3,169 @@ description: >-
   Restoring, protecting, and brightening the skin using natural, science-backed
   ingredients.
 sub_categories:
-  - sub_category_name: Cleansers & Soaps
+  - sub_category_name: 'Soaps and Cleansers '
     products:
-      - product_name: Acne Bar Soap
-        price:
-          amount: 3001
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/0/products/0/image_url.jpg
-        details:
-          description: >-
-            Acne bar soaps have evolved significantly from the harsh, drying
-            bricks of the past. Today, they are popular for being eco-friendly,
-            cost-effective, and highly effective for both face and body acne
-            (like "bacne").
-      - product_name: Face and body soap
-        price:
-          amount: 2000
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/0/products/1/image_url.jpg
-        details:
-          description: >-
-            Face and body soapFace and body soapFace and body soapFace and body
-            soapFace and body soap
-
-            Face and body soapFace and body soapFace and body soap
-
-            Face and body soapFace and body soap
-  - sub_category_name: Toners & mists
-    products:
-      - product_name: Glycolic Acid Toner
+      - product_name: Acne bar soap
         price:
           amount: 10000
           currency: Rwf
+        image_url: /uploads/products/skin-care/sub_categories/0/products/0/image_url.jpg
+        details:
+          description: >
+            A gentle yet effective soap formulated to combat acne and soothe
+            irritated skin. Enriched with natural plant powders, it helps reduce
+            blemishes, balance skin, and leave your skin feeling refreshed and
+            calm.
+        stock_status: true
+        reviews: []
+  - sub_category_name: 'Toners '
+    products:
+      - product_name: Glycolic Acid Toner
+        price:
+          amount: 15000
+          currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/1/products/0/image_url.jpg
         details:
-          description: >-
-            Acne bar soaps have evolved significantly from the harsh, drying
-            bricks of the past. Today, they are popular for being eco-friendly,
-            cost-effective, and highly effective for both face and body acne
-            (like "bacne").
+          description: >
+            A gentle exfoliating toner formulated with glycolic acid to brighten
+            dull skin, fade dark spots, and smooth uneven texture. This toner
+            promotes cell renewal for a radiant, refreshed, and youthful glow
+            while maintaining hydration and balance.
+        stock_status: true
+        reviews: []
       - product_name: Salicylic Acid Toner
         price:
-          amount: 3200
+          amount: 15000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/1/products/1/image_url.jpeg
         details:
-          description: >-
-            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid
-            TonerSalicylic Acid Toner
-
-            Salicylic Acid TonerSalicylic Acid Toner
-
-            Salicylic Acid TonerSalicylic Acid TonerSalicylic Acid Toner
-      - product_name: Hydrating Toner
-        price:
-          amount: 200
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/1/products/2/image_url.jpg
-        details:
-          description: |-
-            Hydrating TonerHydrating TonerHydrating TonerHydrating Toner
-            Hydrating TonerHydrating Toner
-            Hydrating Toner
-            Hydrating TonerHydrating TonerHydrating Toner
-            Hydrating Toner
-  - sub_category_name: Serums & Treatments
+          description: >
+            A clarifying toner formulated with salicylic acid to gently
+            exfoliate, unclog pores, and reduce acne breakouts. This
+            lightweight, refreshing toner helps control excess oil, refine skin
+            texture, and leave the skin smooth and balanced without over-drying.
+        stock_status: true
+        reviews: []
+  - sub_category_name: 'Serums '
     products:
       - product_name: Vitamin C Serum
         price:
-          amount: 100
+          amount: 12000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpeg
         details:
-          description: |-
-            Vitamin C SerumVitamin C SerumVitamin C SerumVitamin C Serum
-            Vitamin C SerumVitamin C Serum
-            v
+          description: >-
+            A brightening serum packed with Vitamin C to even skin tone, fade
+            dark spots, and enhance radiance. This lightweight formula
+            nourishes, protects, and rejuvenates the skin, leaving it refreshed,
+            luminous, and healthy-looking.
+        stock_status: true
+        reviews: []
       - product_name: Niacinamide Serum
         price:
-          amount: 503
+          amount: 12000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/2/products/1/image_url.jpeg
         details:
-          description: |-
-            Niacinamide SerumNiacinamide SerumNiacinamide Serum
-            Niacinamide SerumNiacinamide SerumNiacinamide Serum
+          description: >-
+            A lightweight, fast-absorbing serum that helps reduce dark spots,
+            control excess oil, and improve skin texture. Designed to promote a
+            clear, even, and radiant complexion while strengthening the skin
+            barrier.
+        stock_status: true
+        reviews: []
       - product_name: Anti-Aging Serum
         price:
-          amount: 12132
+          amount: 15000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/2/products/2/image_url.jpg
         details:
           description: >-
-            nti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
-            Serumnti-Aging Serumnti-Aging Serumnti-Aging Serumnti-Aging
-            Serumnti-Aging Serum
-      - product_name: Rice serum
-        price:
-          amount: 1
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/2/products/3/image_url.jpg
-        details:
-          description: |
-            Rice serum
-            Rice serum
-            Rice serumRice serumRice serumRice serum
-            Rice serum
-            Rice serumRice serumRice serum
-  - sub_category_name: Lotions & Creams
+            Tante Beauty Anti-aging serum is crafted to renew and restore skin
+            vitality. This serum combines collagen, retinol, and natural
+            antioxidants to reduce fine lines, improve elasticity, and enhance
+            the skin’s natural glow.
+        stock_status: true
+        reviews: []
+  - sub_category_name: Lotions and Creams
     products:
       - product_name: Face and body Lotion
         price:
-          amount: 125
+          amount: 25000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/0/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/0/image_url.jpeg
         details:
-          description: |-
-            Face and body LotionFace and body LotionFace and body Lotion
-            Face and body LotionFace and body LotionFace and body Lotion
+          description: >-
+            A rich, fast-absorbing lotion that hydrates, softens, and brightens
+            both face and body. Infused with oats milk, collagen, and allantoin,
+            this multi-benefit formula restores moisture, strengthens the skin
+            barrier, and enhances natural radiance for a healthy, even-toned
+            glow.
+        stock_status: true
+        reviews: []
       - product_name: Acne cream
         price:
-          amount: 350
+          amount: 25000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/1/image_url.jpeg
         details:
           description: |-
             Acne creamAcne creamAcne creamddv
             vfdsdvAcne creamAcne creamAcne cream
+        stock_status: true
+        reviews: []
       - product_name: Cica Cream
         price:
-          amount: 455
+          amount: 30000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/3/products/2/image_url.jpg
         details:
           description: >-
-            Cica CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
-            CreamCica CreamCica CreamCica CreamCica CreamCica CreamCica
-            CreamCica Cream
+            A deeply soothing and restorative cream that helps repair damaged
+            skin barriers, calm redness, and replenish hydration. Enriched with
+            Centella Asiatica and natural botanicals, this cream supports
+            healing while leaving skin smooth, strong, and balanced.
+        stock_status: true
+        reviews: []
       - product_name: Sunscreen
         price:
-          amount: 125
+          amount: 15000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/3/products/3/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/3/products/3/image_url.jpeg
         details:
           description: >-
-            vSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreenSunscreen
+            An ultra-light, fast-absorbing sunscreen that provides
+            broad-spectrum SPF 50 protection against UVA and UVB rays.
+            Formulated with advanced UV filters and soothing botanicals, it
+            defends skin from sun damage, dark spots, and premature aging while
+            maintaining a smooth, hydrated finish.
+        stock_status: true
+        reviews: []
   - sub_category_name: Body products
     products:
-      - product_name: Turmeric scrubs
+      - product_name: Turmeric scrub
         price:
-          amount: 520
+          amount: 8000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpg
-        details:
-          description: Turmeric scrubsTurmeric scrubsTurmeric scrubs
-      - product_name: Body cleanse
-        price:
-          amount: 250
-          currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpeg
         details:
           description: >-
-            Body cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody
-            cleanseBody cleanseBody cleanseBody cleanseBody cleanseBody cleanse
+            A gentle yet effective exfoliating scrub made with natural turmeric
+            and sugar to brighten, smooth, and revitalize the skin. This scrub
+            removes dead cells, unclogs pores, and reveals a healthy, radiant
+            glow while keeping skin nourished and soft.
+        stock_status: true
+        reviews: []
       - product_name: 'Body jelly '
         price:
-          amount: 2554
+          amount: 6000
           currency: Rwf
-        image_url: /uploads/products/skin-care/sub_categories/4/products/2/image_url.jpg
+        image_url: /uploads/products/skin-care/sub_categories/4/products/1/image_url.jpeg
         details:
           description: >-
-            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
-            Body jelly Body jelly Body jelly Body jelly Body jelly Body jelly
-            Body jelly 
+            A soothing and gentle body jelly specially formulated for children’s
+            delicate skin. Made with natural moisturizers and nourishing oils,
+            it helps protect, soften, and hydrate the skin while preventing
+            dryness and irritation.
+        stock_status: true
+        reviews: []
