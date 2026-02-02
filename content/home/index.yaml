@@ -3,7 +3,7 @@ productDetailLogo: /uploads/home/product-detail/productDetailLogo.png
 hero:
   heading: The Natural way!
   ctaLabel: Explore our products
-  ctaTarget: /products
+  ctaTarget: /product
   image: /uploads/home/hero/hero/image.jpeg
   mobileImage: /uploads/home/hero/hero/mobileImage.jpeg
   logo: /uploads/home/hero/hero/logo.png
