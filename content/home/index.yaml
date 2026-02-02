@@ -4,7 +4,7 @@ hero:
   heading: The Natural way!
   ctaLabel: Explore our products
   ctaTarget: /products
-  image: /uploads/home/hero/hero/image.jpeg
+  image: /uploads/home/hero/hero/image.png
   mobileImage: /uploads/home/hero/hero/mobileImage.jpg
   logo: /uploads/home/hero/hero/logo.png
 intro:
