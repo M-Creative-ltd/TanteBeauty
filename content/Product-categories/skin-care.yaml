@@ -55,10 +55,9 @@ sub_categories:
         image_url: /uploads/products/skin-care/sub_categories/2/products/0/image_url.jpeg
         details:
           description: >-
-            A brightening serum packed with Vitamin C to even skin tone, fade
-            dark spots, and enhance radiance. This lightweight formula
-            nourishes, protects, and rejuvenates the skin, leaving it refreshed,
-            luminous, and healthy-looking.
+            A brightening serum packed with Vitamin C to even skin tone and fade
+            dark spots. This lightweight formula nourishes, and protects the
+            skin, leaving it refreshed, and healthy-looking.
         stock_status: true
         reviews:
           - fullName: Diane. I
