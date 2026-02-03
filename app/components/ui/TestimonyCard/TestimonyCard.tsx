@@ -12,7 +12,7 @@ interface TestimonialProps {
 const TestimonialCard = ({ fullName, role, testimony, rating, avatar}: TestimonialProps) => {
   console.log(fullName);
   return (
-    <div className="flex flex-col justify-center items-start p-4 gap-4 w-full h-[180px] bg-(--color-primary) rounded-[16px] relative shadow-sm">
+    <div className="flex flex-col justify-center items-start p-4 gap-4 w-full h-fit bg-(--color-primary) rounded-[16px] relative shadow-sm">
       
       {/* Star Rating Section */}
       <div className="flex flex-row items-center gap-4 w-full h-[20px]">
@@ -31,7 +31,7 @@ const TestimonialCard = ({ fullName, role, testimony, rating, avatar}: Testimoni
       </div>
 
       {/* Testimony Text */}
-      <p className="w-full text-(--color-accent) font-sans font-normal text-[11px] line-clamp-2 leading-[13px] flex items-center">
+      <p className="w-full text-(--color-accent) font-sans font-normal text-[11px] leading-[13px] flex items-center">
         {testimony}
       </p>
 
@@ -40,7 +40,7 @@ const TestimonialCard = ({ fullName, role, testimony, rating, avatar}: Testimoni
         {/* Avatar */}
         <div className="w-[50px] h-[50px] rounded-full overflow-hidden bg-(--color-secondary) flex-shrink-0">
           <Image 
-            src={avatar? avatar: ''} 
+            src={avatar? avatar: '/uploads/products/reveiws/default-avatar.png'} 
             alt={fullName}
             width={50}
             height={50}
