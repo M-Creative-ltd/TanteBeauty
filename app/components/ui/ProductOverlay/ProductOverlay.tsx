@@ -144,7 +144,7 @@ export default function ProductOverlay({
             </div>
             <div className="p-6 flex flex-col gap-4 text-center">
               <h2 className="font-semibold text-2xl text-primary">{product.product_name}</h2>
-              <p className="text-sm text-gray-600 line-clamp-4">{product.details.description}</p>
+              <p className="text-sm text-gray-600">{product.details.description}</p>
               
               <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-100">
                 <a href={whatsappUrl} className="flex items-center justify-center gap-2 py-2 border border-primary text-primary rounded-md">
@@ -160,9 +160,9 @@ export default function ProductOverlay({
 
         {/* Reviews Section: Horizontal Wrap on MD+, Vertical on SM */}
         {product.reviews && product.reviews.length > 0 && (
-          <div className="pointer-events-auto w-full max-w-[1071px] flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-6 pb-10">
+          <div className="pointer-events-auto w-full max-w-[1071px] flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-6 pb-10 h-fit">
             {product.reviews.map((review, index) => (
-              <div key={index} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <div key={index} className="w-full h-fit md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
                 <TestimonialCard {...review} />
               </div>
             ))}

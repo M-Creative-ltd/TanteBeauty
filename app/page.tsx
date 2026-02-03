@@ -10,7 +10,7 @@ import ScrollSnapEnabler from './components/utils/ScrollSnapEnabler';
 
 export default async function Homepage() {
   const home = await reader.singletons.home.read();
-  console.log(home);
+  
 
   if (!home) {
     return (
