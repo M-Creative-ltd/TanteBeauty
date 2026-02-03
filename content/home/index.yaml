@@ -11,7 +11,7 @@ intro:
   image: /uploads/home/intro/intro/image.jpeg
   logo: /uploads/home/intro/intro/logo.png
   ctaLabel: Explore our Products
-  ctaTarget: /products
+  ctaTarget: /product
 why:
   heading: Who is Tante and Why Tante?
   image: /uploads/home/why/why/image.jpg
