@@ -60,7 +60,15 @@ sub_categories:
             nourishes, protects, and rejuvenates the skin, leaving it refreshed,
             luminous, and healthy-looking.
         stock_status: true
-        reviews: []
+        reviews:
+          - fullName: Diane. I
+            rating: 5
+            testimony: >-
+              I call it my morning sunshine in a bottle. A few drops of Tante’s
+              Vitamin C Serum and my face instantly feels alive; brighter,
+              smoother and ready for the day. My coworkers keep asking if I have
+              changed my makeup. my reply is always... Nope. Just Vitamin C and
+              consistency.
       - product_name: Niacinamide Serum
         price:
           amount: 12000
