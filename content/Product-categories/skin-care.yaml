@@ -57,17 +57,15 @@ sub_categories:
           description: >-
             A brightening serum packed with Vitamin C to even skin tone and fade
             dark spots. This lightweight formula nourishes, and protects the
-            skin, leaving it refreshed, and healthy-looking.
+            skin, leaving it refreshed. 
         stock_status: true
         reviews:
           - fullName: Diane. I
             rating: 5
             testimony: >-
-              I call it my morning sunshine in a bottle. A few drops of Tante’s
-              Vitamin C Serum and my face instantly feels alive; brighter,
-              smoother and ready for the day. My coworkers keep asking if I have
-              changed my makeup. my reply is always... Nope. Just Vitamin C and
-              consistency.
+              Tante Vitamin C Serum gave me a natural glow in just a few weeks!
+              It absorbs so easily and doesn’t irritate my skin. I can’t go a
+              day without it.
       - product_name: Niacinamide Serum
         price:
           amount: 12000
