@@ -2,9 +2,9 @@ title: home page
 productDetailLogo: /uploads/home/product-detail/productDetailLogo.png
 hero:
   heading: The Natural way!
-  ctaLabel: Explore our products
+  ctaLabel: Explore our natural products
   ctaTarget: /product
-  image: /uploads/home/hero/hero/image.jpeg
+  image: /uploads/home/hero/hero/image.jpg
   mobileImage: /uploads/home/hero/hero/mobileImage.jpeg
   logo: /uploads/home/hero/hero/logo.png
 intro:
