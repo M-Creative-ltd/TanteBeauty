@@ -178,7 +178,7 @@ sub_categories:
     products:
       - product_name: Turmeric scrub
         price:
-          amount: 8000
+          amount: 12000
           currency: Rwf
         image_url: /uploads/products/skin-care/sub_categories/4/products/0/image_url.jpeg
         details:
