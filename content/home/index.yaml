@@ -8,7 +8,7 @@ hero:
   mobileImage: /uploads/home/hero/hero/mobileImage.jpeg
   logo: /uploads/home/hero/hero/logo.png
 intro:
-  image: /uploads/home/intro/intro/image.jpeg
+  image: /uploads/home/intro/intro/image.jpg
   logo: /uploads/home/intro/intro/logo.png
   ctaLabel: Explore our Products
   ctaTarget: /product
