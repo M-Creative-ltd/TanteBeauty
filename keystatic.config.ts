@@ -466,6 +466,30 @@ export default config({
             itemLabel: (props) => props.fields.platform.value ?? 'Link',
           }
         ),
+        partners: fields.array(
+          fields.object({
+            name: fields.text({
+              label: 'Name',
+              validation: { isRequired: true },
+            }),
+            logo: fields.image({
+              label: 'Logo',
+              directory: 'public/uploads/footer/partners',
+              publicPath: '/uploads/footer/partners',
+              description: 'The partner’s own logo. It appears only after a logo is uploaded.',
+            }),
+            url: fields.url({
+              label: 'Website',
+              description: 'Optional. Leave empty if the logo should not link anywhere.',
+              validation: { isRequired: false },
+            }),
+          }),
+          {
+            label: 'Partners',
+            description: 'Shown as a logo row above the copyright. Keep the list short, about eight, so the footer stays quiet.',
+            itemLabel: (props) => props.fields.name.value || 'Partner',
+          }
+        ),
       },
     }),
     

@@ -10,7 +10,12 @@ export default async function Footer() {
     return null;
   }
 
-  const { logo, tagline, address, copyright, socialLinks } = footer;
+  const { logo, tagline, address, copyright, socialLinks, partners } = footer;
+  const visiblePartners = (partners ?? []).flatMap((partner) => {
+    const name = partner.name?.trim();
+    if (!name || !partner.logo) return [];
+    return [{ name, logo: partner.logo, url: partner.url }];
+  });
 
   return (
     <footer role="contentinfo" className="bg-white py-12 md:py-16 md:snap-start">
@@ -85,6 +90,52 @@ export default async function Footer() {
             )}
           </div>
         </div>
+
+        {visiblePartners.length > 0 && (
+          <div className="mb-8">
+            <p className="mb-6 text-center text-sm text-[#014b3c]">Partners</p>
+            <ul className="flex flex-wrap items-start justify-center gap-x-10 gap-y-8">
+              {visiblePartners.map((partner, index) => {
+                const mark = (
+                  <>
+                    <span className="flex h-10 items-center justify-center">
+                      <Image
+                        src={partner.logo}
+                        alt=""
+                        width={160}
+                        height={40}
+                        quality={90}
+                        className="h-10 w-auto max-w-[9rem] object-contain"
+                      />
+                    </span>
+                    <span className="max-w-[9rem] truncate text-center text-sm text-gray-500">
+                      {partner.name}
+                    </span>
+                  </>
+                );
+
+                return (
+                  <li key={`${partner.name}-${index}`} className="flex">
+                    {partner.url ? (
+                      <a
+                        href={partner.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex min-h-11 flex-col items-center justify-center gap-2 rounded-sm px-1 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#014b3c]"
+                      >
+                        {mark}
+                      </a>
+                    ) : (
+                      <div className="flex min-h-11 flex-col items-center justify-center gap-2 px-1">
+                        {mark}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
 
         {/* Copyright - Centered Bottom */}
         {copyright && (
